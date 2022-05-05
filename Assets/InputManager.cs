@@ -30,12 +30,12 @@ public class InputManager : MonoBehaviour
     // Returns the grid cell if the mouse is over
     GridCell isMouseOverAGridSpace()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f, gridLayer))
-        {
-            return hitInfo.transform.GetComponent<GridCell>();
-        }
+        // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //
+        // if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f, gridLayer))
+        // {
+        //     return hitInfo.transform.GetComponent<GridCell>();
+        // }
 
         return null;
     }

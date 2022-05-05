@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8037795144369965542}
   - component: {fileID: 8037795144369965545}
   - component: {fileID: -1092131319164724487}
+  - component: {fileID: 1258743425234877663}
   m_Layer: 0
   m_Name: hitbox
   m_TagString: Env
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5fcaee3dc5651634fac6c6c314c32c23, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,3 +127,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 20
+--- !u!114 &1258743425234877663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037795144369965544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faac028440faa014694245e5032a93c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTime: 0.02
+  colors:
+  - {r: 0.09019608, g: 0.1254902, b: 0.14901961, a: 0}
+  - {r: 0.37254903, g: 0.8039216, b: 0.8509804, a: 0}
+  - {r: 0.007843138, g: 0.4509804, b: 0.4509804, a: 0}
+  - {r: 0.015686275, g: 0.7490196, b: 0.6784314, a: 0}
+  - {r: 0.015686275, g: 0.7490196, b: 0.6156863, a: 1}
