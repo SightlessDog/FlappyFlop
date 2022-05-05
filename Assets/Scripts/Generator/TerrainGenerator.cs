@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    public float sendTimer = 0;
-    public float frequency = 10f;
+    [SerializeField] private float sendTimer = 0;
+    [SerializeField] private float frequency = 10f;
     public GameObject ground;
     public GameObject ceiling;
 
