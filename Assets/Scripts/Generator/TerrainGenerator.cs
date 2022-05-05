@@ -15,8 +15,8 @@ public class TerrainGenerator : MonoBehaviour
         sendTimer -= Time.deltaTime;
         if (sendTimer < 0) 
         {
-            Instantiate(ground, new Vector3(0, 0, -10f), transform.rotation);
-            Instantiate(ceiling, new Vector3(0, 50, -10f), transform.rotation);
+            Instantiate(ground, new Vector3(0, -50, -10f), transform.rotation);
+            Instantiate(ceiling, new Vector3(0, 100, -10f), transform.rotation);
             sendTimer = frequency;
         }
     }

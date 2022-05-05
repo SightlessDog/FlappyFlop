@@ -14,9 +14,7 @@ public class ObstacleGenerator : MonoBehaviour
         sendTimer -= Time.deltaTime;
         if (sendTimer <= 0)
         {
-            createObstacle(PlayingLineType.LEFT);
             createObstacle(PlayingLineType.CENTER);
-            createObstacle(PlayingLineType.RIGHT);
             sendTimer = frequency;
         }
         
@@ -30,13 +28,13 @@ public class ObstacleGenerator : MonoBehaviour
         switch (pos)
         {
             case PlayingLineType.LEFT :
-                transform.position = new Vector3(30, yPos, 70);
+                transform.position = new Vector3(30, yPos, 40);
                 break;
             case PlayingLineType.CENTER:
-                transform.position = new Vector3(0, yPos, 70);
+                transform.position = new Vector3(0, yPos, 40);
                 break;
             case PlayingLineType.RIGHT:
-                transform.position = new Vector3(-30, yPos, 70);
+                transform.position = new Vector3(-30, yPos, 40);
                 break;
         }
         

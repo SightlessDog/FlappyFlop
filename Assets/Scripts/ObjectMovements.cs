@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectMovements : MonoBehaviour
 {
-    public float life = 5; 
+    public float life = 20; 
     // Update is called once per frame
     void Update()
     {
