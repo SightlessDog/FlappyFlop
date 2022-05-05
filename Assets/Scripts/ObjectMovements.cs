@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movements : MonoBehaviour
+public class ObjectMovements : MonoBehaviour
 {
     public float life = 5; 
     // Update is called once per frame

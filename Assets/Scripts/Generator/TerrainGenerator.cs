@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundGenerator : MonoBehaviour
+public class TerrainGenerator : MonoBehaviour
 {
     public float sendTimer = 0;
     public float frequency = 10f;
-    public GameObject floor;
+    public GameObject ground;
+    public GameObject ceiling;
 
     // Update is called once per frame
     void Update()
@@ -14,7 +15,8 @@ public class GroundGenerator : MonoBehaviour
         sendTimer -= Time.deltaTime;
         if (sendTimer < 0) 
         {
-            Instantiate(floor, new Vector3(0, 0, -10f), transform.rotation);
+            Instantiate(ground, new Vector3(0, 0, -10f), transform.rotation);
+            Instantiate(ceiling, new Vector3(0, 50, -10f), transform.rotation);
             sendTimer = frequency;
         }
     }
