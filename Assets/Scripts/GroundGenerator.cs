@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript1 : MonoBehaviour
+public class GroundGenerator : MonoBehaviour
 {
     public float sendTimer = 0;
     public float frequency = 10f;
