@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using UnityEngine;
 
 public class ObstacleGenerator : MonoBehaviour
@@ -6,21 +7,16 @@ public class ObstacleGenerator : MonoBehaviour
     private float frequency = 4;
     public GameObject myObstacle;
     public GameObject mainCharacter;
-
-    enum ObtaclePosition
-    {
-        LEFT,
-        CENTER,
-        RIGHT
-    }
+    
+    [SerializeField] private PlayingLineType playingLineType;
     void Update()
     {
         sendTimer -= Time.deltaTime;
         if (sendTimer <= 0)
         {
-            createObstacle(ObtaclePosition.LEFT);
-            createObstacle(ObtaclePosition.CENTER);
-            createObstacle(ObtaclePosition.RIGHT);
+            createObstacle(PlayingLineType.LEFT);
+            createObstacle(PlayingLineType.CENTER);
+            createObstacle(PlayingLineType.RIGHT);
             sendTimer = frequency;
         }
         
@@ -28,18 +24,18 @@ public class ObstacleGenerator : MonoBehaviour
         else Time.timeScale = 0;
     }
 
-    private void createObstacle(ObtaclePosition pos)
+    private void createObstacle(PlayingLineType pos)
     {
         var yPos = Random.Range(50f, 60f);
         switch (pos)
         {
-            case ObtaclePosition.LEFT :
+            case PlayingLineType.LEFT :
                 transform.position = new Vector3(30, yPos, 70);
                 break;
-            case ObtaclePosition.CENTER:
+            case PlayingLineType.CENTER:
                 transform.position = new Vector3(0, yPos, 70);
                 break;
-            case ObtaclePosition.RIGHT:
+            case PlayingLineType.RIGHT:
                 transform.position = new Vector3(-30, yPos, 70);
                 break;
         }
