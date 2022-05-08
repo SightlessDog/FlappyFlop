@@ -2,26 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectMovements : MonoBehaviour
+public class GroundGenerator : MonoBehaviour
 {
-    public float life = 5; 
+    public float sendTimer = 0;
+    public float frequency = 10f;
+    public GameObject floor;
     private bool started;
     private bool paused;
+
     void Awake()
     {
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
-
+    
     void onDestroy()
     {
         GameManager.onGameStateChanged -= GameManagerOnGameStateChanged;
     }
-
+    
     private void GameManagerOnGameStateChanged(State state)
     {
         started = state == State.PLAY;
         paused = state == State.PAUSE;
     }
+    
     // Update is called once per frame
     void Update()
     {
@@ -36,9 +40,12 @@ public class ObjectMovements : MonoBehaviour
         }
         if (started)
         {
-            life -= Time.deltaTime;
-            if (life <= 0) Destroy(gameObject);
-            else transform.Translate(0, 0, 3*Time.deltaTime);  
+            sendTimer -= Time.deltaTime;
+            if (sendTimer < 0) 
+            {
+                Instantiate(floor, new Vector3(0, 0, -10f), transform.rotation);
+                sendTimer = frequency;
+            }
         }
     }
 }

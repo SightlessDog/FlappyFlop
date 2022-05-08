@@ -5,141 +5,65 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject panelMenu;
-    public GameObject panelPlay;
-    public GameObject panelGameOver;
-    private State _state;
-    private bool _isSwitchingState;
-    private bool GameIsPaused;
-    private GameManager Instance;
-    
-    // Start is called before the first frame update
-    void Start()
+  public static GameManager Instance;
+  public State state;
+  private bool paused = false;
+  public static event Action<State> onGameStateChanged;
+
+  void Awake()
+  {
+    Instance = this;
+  }
+
+  void Start()
+  {
+    UpdateGameState(State.INIT);
+  }
+
+  public void PlayClicked()
+  {
+    Debug.Log("PlayClicked");
+    UpdateGameState(State.PLAY);
+  }
+
+  public void QuitClicked()
+  {
+    Debug.Log("QuitClicked");
+    Application.Quit();
+  }
+
+  public void UpdateGameState(State state)
+  {
+    this.state = state;
+
+    switch (state)
     {
-        Instance = this;
-        SwitchState(State.MENU);
-        Time.timeScale = 0;
-    }
-    
-    public void PlayClicked()
-    {
-        SwitchState(State.INIT);
+      case State.INIT:
+        break;
+      case State.MENU:
+        break;
+      case State.PLAY:
+        break;
+      case State.PAUSE:
+        break;
+      case State.GAMEOVER:
+        break;
+      default:
+        throw new ArgumentOutOfRangeException(nameof(state), state, null);
     }
 
-    public void QuitClicked()
+    onGameStateChanged?.Invoke(state);
+  }
+
+  private void Update()
+  {
+    Debug.Log("hello");
+    if (Input.GetKeyDown("escape"))
     {
-        Application.Quit();
+      paused = !paused;
+      UpdateGameState(paused ? State.PAUSE : State.PLAY);
     }
-    
-    public void SwitchState(State newState, float delay = 1f)
-    {
-        StartCoroutine(SwitchDelay(newState, delay));
-    }
-    
-    IEnumerator SwitchDelay(State newState, float delay)
-    {
-        _isSwitchingState = true;
-        yield return new WaitForSeconds(delay);
-        EndState();
-        _state = newState;
-        BeginState(newState);
-        _isSwitchingState = false;
-    }
-    
-    void setPauseOption()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
-    }
-    
-    public void Resume()
-    {
-        Cursor.visible = false;
-        panelMenu.SetActive(false);
-        GameIsPaused = false;
-        Time.timeScale = 1f;
-    }
-    void Pause()
-    {
-        Cursor.visible = true;
-        panelMenu.SetActive(true);
-        GameIsPaused = true;
-        Time.timeScale = 0f;
-    }
-    
-    void BeginState(State newState)
-    {
-        switch (newState)
-        {
-            case State.MENU:
-                Cursor.visible = true;
-                panelMenu.SetActive(true);
-                break;
-            case State.INIT:
-                Cursor.visible = false;
-                panelMenu.SetActive(false);
-                SwitchState(State.PLAY);
-                Time.timeScale = 1;
-                break;
-            case State.PLAY:
-                break;
-            case State.GAMEOVER:
-                // We have to destroy the whole objects in the scene here 
-                panelGameOver.SetActive(true);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
-        }
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        switch (_state)
-        {
-            case State.MENU:
-                break;
-            case State.INIT:
-                break;
-            case State.PLAY:
-                setPauseOption();
-                // handle switching to game over state
-                break;
-            case State.GAMEOVER:
-                if (Input.anyKeyDown)
-                {
-                    SwitchState(State.MENU);
-                }
-                break;
-        }
-    }
-    
-    void EndState()
-    {
-        switch (_state)
-        {
-            case State.MENU:
-                panelMenu.SetActive(false);
-                break;
-            case State.INIT:
-                break;
-            case State.PLAY:
-                break;
-            case State.GAMEOVER:
-                panelPlay.SetActive(false);
-                panelGameOver.SetActive(false);
-                break;
-        }
-    }
+  }
 }
 
-public enum State { MENU, INIT, PLAY, GAMEOVER }
+public enum State { MENU, INIT, PLAY, PAUSE, GAMEOVER }

@@ -6,16 +6,46 @@ public class CharacterController : MonoBehaviour
 {
     public float ySpeed;
     public float yTarget;
+    private bool started;
+    private bool paused;
+    
+    void Awake()
+    {
+        GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
+    }
+    
+    void onDestroy()
+    {
+        GameManager.onGameStateChanged -= GameManagerOnGameStateChanged;
+    }
+    
+    private void GameManagerOnGameStateChanged(State state)
+    {
+        started = state == State.PLAY;
+        paused = state == State.PAUSE;
+    }
 
-// Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
-        gameObject.transform.Translate(0, ySpeed, 0);
-        ySpeed = Mathf.Lerp(ySpeed, yTarget, 0.025f);
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (paused)
         {
-            ySpeed = 0.25f;
+            Time.timeScale = 0;
+            return;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }   
+        if (started)
+        {
+            gameObject.transform.Translate(0, ySpeed, 0);
+            ySpeed = Mathf.Lerp(ySpeed, yTarget, 0.025f);
+
+            if (Input.GetKeyDown("space"))
+            {
+                ySpeed = 0.25f;
+            }   
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
