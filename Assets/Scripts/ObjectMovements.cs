@@ -10,7 +10,6 @@ public class ObjectMovements : MonoBehaviour
     void Awake()
     {
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
-        Debug.Log("Awake from generator");
     }
 
     private void GameManagerOnGameStateChanged(State state)
@@ -33,7 +32,6 @@ public class ObjectMovements : MonoBehaviour
         }
         if (started)
         {
-            Debug.Log("update from object movements");
             life -= Time.deltaTime;
             if (life <= 0) Destroy(gameObject);
             else transform.Translate(0, 0, 3*Time.deltaTime);  

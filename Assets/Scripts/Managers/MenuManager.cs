@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _menuPanel;
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject gameOverPanel;
 
     void Awake()
     {
@@ -18,6 +19,7 @@ public class MenuManager : MonoBehaviour
 
     private void GameManagerOnGameStateChanged(State state)
     {
-        _menuPanel.SetActive(state == State.INIT || state == State.PAUSE);
+        menuPanel.SetActive(state == State.INIT || state == State.PAUSE);
+        gameOverPanel.SetActive(state == State.GAMEOVER);
     }
 }

@@ -10,8 +10,8 @@ public class Collision : MonoBehaviour
         if (other.gameObject.tag == "Env")
         {
             Destroy(gameObject);
+            Debug.Log("Collision and object destroyed");
+            GameManager.Instance.UpdateGameState(State.GAMEOVER);
         }
-
-        Debug.Log("Collision");
     }
 }
