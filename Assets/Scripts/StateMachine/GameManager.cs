@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
   public static GameManager Instance;
   public State state;
-  private bool paused = false;
+  private bool paused;
+  public bool started;
   public static event Action<State> onGameStateChanged;
 
   void Awake()
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
   public void PlayClicked()
   {
     Debug.Log("PlayClicked");
+    started = true;
     UpdateGameState(State.PLAY);
   }
 
@@ -57,7 +59,6 @@ public class GameManager : MonoBehaviour
 
   private void Update()
   {
-    Debug.Log("hello");
     if (Input.GetKeyDown("escape"))
     {
       paused = !paused;

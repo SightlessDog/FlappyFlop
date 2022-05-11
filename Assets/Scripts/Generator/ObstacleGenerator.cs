@@ -6,6 +6,10 @@ public class ObstacleGenerator : MonoBehaviour
     [SerializeField] private float frequency = 5f;
     public GameObject myObstacle;
     public GameObject mainCharacter;
+
+    void Awake()
+    {
+    }
     
     void Update()
     {

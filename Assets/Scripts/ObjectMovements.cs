@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class ObjectMovements : MonoBehaviour
 {
-    public float life = 5; 
+    public float life = 20; 
     private bool started;
     private bool paused;
     void Awake()
     {
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
-    }
-
-    void onDestroy()
-    {
-        GameManager.onGameStateChanged -= GameManagerOnGameStateChanged;
+        Debug.Log("Awake from generator");
     }
 
     private void GameManagerOnGameStateChanged(State state)
@@ -25,6 +21,7 @@ public class ObjectMovements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        started = GameManager.Instance.started;
         if (paused)
         {
             Time.timeScale = 0;
@@ -36,6 +33,7 @@ public class ObjectMovements : MonoBehaviour
         }
         if (started)
         {
+            Debug.Log("update from object movements");
             life -= Time.deltaTime;
             if (life <= 0) Destroy(gameObject);
             else transform.Translate(0, 0, 3*Time.deltaTime);  
