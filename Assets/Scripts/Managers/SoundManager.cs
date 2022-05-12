@@ -6,6 +6,12 @@ using UnityEngine.UI;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private Slider volumeSlider;
+
+    void Awake()
+    {
+        Load();
+    }
+    
     // Start is called before the first frame update
     void Start()
     {

@@ -7,19 +7,23 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private float score;
+    private float highScore;
     public Text scoreText;
+    public Text highScoreText;
 
     void Awake()
     {
-        Collision.onCollisionWithCheckpoint += increaseScore;
+        Collision.onCollisionWithCheckpoint += IncreaseScore;
+        GameManager.onGameStateChanged += UpdateHighScore;
     }
 
     void Destroy ()
     {  
-        Collision.onCollisionWithCheckpoint -= increaseScore;
+        Collision.onCollisionWithCheckpoint -= IncreaseScore;
+        GameManager.onGameStateChanged -= UpdateHighScore;
     }
 
-    void increaseScore()
+    void IncreaseScore()
     {
         score += score + 10;
         UpdateScoreDisplay();
@@ -28,5 +32,24 @@ public class ScoreManager : MonoBehaviour
     public void UpdateScoreDisplay()
     {
         scoreText.text = "Score: " + score;
+        highScoreText.text = "High Score: " + highScore;
+    }
+
+    void UpdateHighScore(State state)
+    {
+        if (state == State.GAMEOVER)
+        {
+            highScore = PlayerPrefs.GetFloat("highScore");
+            if (score > highScore)
+            {
+                PlayerPrefs.SetFloat("highScore", score);
+            }
+        }
+
+        if (state == State.PLAY)
+        {
+            highScore = PlayerPrefs.GetFloat("highScore");
+            highScoreText.text = "High Score: " + highScore;
+        }
     }
 }
