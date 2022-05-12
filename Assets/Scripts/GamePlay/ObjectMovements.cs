@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Generator;
 using UnityEngine;
+using Random = System.Random;
 
 public class ObjectMovements : MonoBehaviour
 {
-    public float life = 20; 
+    public float life = 20;
     private bool started;
     private bool paused;
+    [SerializeField] private float speed;
+
+    public DirectionType directionType;
+
     void Awake()
     {
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
@@ -17,24 +22,45 @@ public class ObjectMovements : MonoBehaviour
         started = state == State.PLAY;
         paused = state == State.PAUSE;
     }
-    // Update is called once per frame
+
     void Update()
     {
         started = GameManager.Instance.started;
+        Pause();
+
+        if (started)
+        {
+            life -= Time.deltaTime;
+            if (life <= 0) Destroy(gameObject);
+            else
+            {
+                transform.position += SwitchTranslate();
+            }
+        }
+    }
+
+    private void Pause()
+    {
         if (paused)
         {
             Time.timeScale = 0;
             return;
         }
-        else
+
+        Time.timeScale = 1;
+    }
+
+    private Vector3 SwitchTranslate()
+    {
+        speed = 3 * Time.deltaTime;
+        
+        return directionType switch
         {
-            Time.timeScale = 1;
-        }
-        if (started)
-        {
-            life -= Time.deltaTime;
-            if (life <= 0) Destroy(gameObject);
-            else transform.Translate(0, 0, 3*Time.deltaTime);  
-        }
+            DirectionType.RIGHT => new Vector3(-speed, 0, 0),
+            DirectionType.LEFT => new Vector3(speed, 0, 0),
+            DirectionType.BACKWARD => new Vector3(0, 0, -speed),
+            DirectionType.FORWARD => new Vector3(0, 0, speed),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 }
