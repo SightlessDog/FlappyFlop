@@ -4,12 +4,18 @@ public class ObstacleGenerator : MonoBehaviour
 {
     [SerializeField] private float sendTimer = 0;
     [SerializeField] private float frequency = 5f;
+    [SerializeField] private bool cheat;
+
     public GameObject myObstacle;
     public GameObject mainCharacter;
+
     private bool started;
+    private float minRange = 50f;
+    private float maxRange = 60f;
 
     void Awake()
     {
+        cheat = false;
         GameManager.onGameStateChanged += StartGame;
     }
 
@@ -17,25 +23,46 @@ public class ObstacleGenerator : MonoBehaviour
     {
         GameManager.onGameStateChanged -= StartGame;
     }
-    
+
     void Update()
     {
+        SetGameVar();
         if (started)
         {
             sendTimer -= Time.deltaTime;
             if (sendTimer <= 0)
             {
-                createObstacle();
+                CreateObstacle();
                 sendTimer = frequency;
             }
+
             if (mainCharacter != null) Time.timeScale = 1;
-            else Time.timeScale = 0;    
+            else Time.timeScale = 0;
         }
     }
 
-    private void createObstacle()
+    public void CheatMode()
     {
-        var yPos = Random.Range(50f, 60f);
+        cheat = !cheat;
+    }
+
+    private void SetGameVar()
+    {
+        if (cheat)
+        {
+            minRange = 55f;
+            maxRange = 55f;
+        }
+        else
+        {
+            minRange = 50f;
+            maxRange = 60f;
+        }
+    }
+
+    private void CreateObstacle()
+    {
+        var yPos = Random.Range(minRange, maxRange);
         transform.position = new Vector3(0, yPos, 40);
         Instantiate(myObstacle, transform.position, transform.rotation);
     }

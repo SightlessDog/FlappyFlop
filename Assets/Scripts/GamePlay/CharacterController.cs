@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+    [SerializeField] private bool cheat;
+
     public float ySpeed;
     public float yTarget;
+
     private bool started;
     private bool paused;
-    
+
     void Awake()
     {
+        cheat = false;
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
-    
+
     void onDestroy()
     {
         GameManager.onGameStateChanged -= GameManagerOnGameStateChanged;
     }
-    
+
     private void GameManagerOnGameStateChanged(State state)
     {
         started = state == State.PLAY;
@@ -28,6 +32,17 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Pause();
+        BirdControl();
+    }
+
+    public void CheatMode()
+    {
+        cheat = !cheat;
+    }
+
+    private void Pause()
+    {
         if (paused)
         {
             Time.timeScale = 0;
@@ -36,26 +51,45 @@ public class CharacterController : MonoBehaviour
         else
         {
             Time.timeScale = 1;
-        }   
+        }
+    }
+
+    private void BirdControl()
+    {
         if (started)
         {
-            gameObject.transform.Translate(0, ySpeed, 0);
-            ySpeed = Mathf.Lerp(ySpeed, yTarget, 0.025f);
-
-            if (Input.GetKeyDown("space"))
+            if (cheat)
             {
-                ySpeed = 0.25f;
-            }   
+                CheatBirdControl();
+            }
+            else
+            {
+                NormalBirdControl();
+            }
+        }
+    }
+
+    private void NormalBirdControl()
+    {
+        gameObject.transform.Translate(0, ySpeed, 0);
+        ySpeed = Mathf.Lerp(ySpeed, yTarget, 0.025f);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ySpeed = 0.25f;
+        }
+    }
+
+    private void CheatBirdControl()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            gameObject.transform.Translate(0, 0.5f, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            transform.Rotate(new Vector3(0, -90, 0));
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            transform.Rotate(new Vector3(0, 90, 0));
+            gameObject.transform.Translate(0, -0.5f, 0);
         }
     }
 }
