@@ -9,15 +9,12 @@ public class TerrainGenerator : MonoBehaviour
 {
     [SerializeField] private float sendTimer = 0;
     [SerializeField] private float frequency = 10f;
-    [SerializeField] private DirectionType currentDirection = DirectionType.FORWARD;
 
     public GameObject ground;
     public GameObject ceiling;
 
-    [SerializeField] private ObjectMovements groundObjectMovements;
-    [SerializeField] private ObjectMovements ceilingObjectMovements;
-
     private bool started;
+    private float mainXPos = 0;
 
     void Awake()
     {
@@ -31,54 +28,25 @@ public class TerrainGenerator : MonoBehaviour
             sendTimer -= Time.deltaTime;
             if (sendTimer < 0)
             {
-                GenerateRandomCeilingAndGround();
+                GenerateCeilingAndGround(mainXPos);
+                GenerateCeilingAndGround(mainXPos+50);
+                GenerateCeilingAndGround(mainXPos-50);
                 sendTimer = frequency;
             }
         }
     }
 
-    private void GenerateCeilingAndGround(Quaternion quaternion)
+    private void GenerateCeilingAndGround(float xPos)
     {
-        var groundObj = Instantiate(ground, new Vector3(0, -50, 0), transform.rotation * quaternion);
-        var ceilingObj = Instantiate(ceiling, new Vector3(0, 100, -0), transform.rotation * quaternion);
-        groundObjectMovements = groundObj.GetComponent<ObjectMovements>();
-        ceilingObjectMovements = ceilingObj.GetComponent<ObjectMovements>();
+        Instantiate(ground, new Vector3(xPos, -50, 0), transform.rotation);
+        Instantiate(ceiling, new Vector3(xPos, 100, 0), transform.rotation);
     }
-
-    private void GenerateRandomCeilingAndGround()
+    
+    public void UpdateMainXPos(float xPos)
     {
-        var nextDir = GetNextRandomDirection(currentDirection);
-        if (nextDir == DirectionType.FORWARD || nextDir == DirectionType.BACKWARD)
-        {
-            GenerateCeilingAndGround(Quaternion.Euler(0, 0, 0));
-        }
-        else
-        {
-            GenerateCeilingAndGround(Quaternion.Euler(0, 90, 0));
-        }
-
-        groundObjectMovements.directionType = nextDir;
-        ceilingObjectMovements.directionType = nextDir;
-        currentDirection = nextDir;
+        mainXPos = xPos;
     }
-
-    private bool RandomDir()
-    {
-        var rand = new Random();
-        var result = rand.Next(2);
-        return result == 1;
-    }
-
-    private DirectionType GetNextRandomDirection(DirectionType curDir)
-    {
-        if (curDir == DirectionType.FORWARD || curDir == DirectionType.BACKWARD)
-        {
-            return RandomDir() ? DirectionType.LEFT : DirectionType.RIGHT;
-        }
-
-        return RandomDir() ? DirectionType.BACKWARD : DirectionType.FORWARD;
-    }
-
+    
     void StartGame(State state)
     {
         started = state == State.PLAY;

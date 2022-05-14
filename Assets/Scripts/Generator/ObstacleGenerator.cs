@@ -12,6 +12,7 @@ public class ObstacleGenerator : MonoBehaviour
     private bool started;
     private float minRange = 50f;
     private float maxRange = 60f;
+    private float mainXPos = 0;
 
     void Awake()
     {
@@ -32,7 +33,10 @@ public class ObstacleGenerator : MonoBehaviour
             sendTimer -= Time.deltaTime;
             if (sendTimer <= 0)
             {
-                CreateObstacle();
+                CreateObstacle(mainXPos);
+                CreateObstacle(mainXPos + 50);
+                CreateObstacle(mainXPos - 50);
+
                 sendTimer = frequency;
             }
 
@@ -60,10 +64,15 @@ public class ObstacleGenerator : MonoBehaviour
         }
     }
 
-    private void CreateObstacle()
+    public void UpdateMainXPos(float xPos)
+    {
+        mainXPos = xPos;
+    }
+
+    private void CreateObstacle(float xPos)
     {
         var yPos = Random.Range(minRange, maxRange);
-        transform.position = new Vector3(0, yPos, 40);
+        transform.position = new Vector3(xPos, yPos, 40);
         Instantiate(myObstacle, transform.position, transform.rotation);
     }
 

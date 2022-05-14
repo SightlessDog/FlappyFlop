@@ -8,10 +8,7 @@ public class ObjectMovements : MonoBehaviour
     public float life = 20;
     private bool started;
     private bool paused;
-    [SerializeField] private float speed;
-
-    public DirectionType directionType;
-
+    
     void Awake()
     {
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
@@ -34,7 +31,7 @@ public class ObjectMovements : MonoBehaviour
             if (life <= 0) Destroy(gameObject);
             else
             {
-                transform.position += SwitchTranslate();
+                transform.Translate(new Vector3(0, 0, 3 * Time.deltaTime));
             }
         }
     }
@@ -50,17 +47,17 @@ public class ObjectMovements : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private Vector3 SwitchTranslate()
-    {
-        speed = 3 * Time.deltaTime;
-        
-        return directionType switch
-        {
-            DirectionType.RIGHT => new Vector3(-speed, 0, 0),
-            DirectionType.LEFT => new Vector3(speed, 0, 0),
-            DirectionType.BACKWARD => new Vector3(0, 0, -speed),
-            DirectionType.FORWARD => new Vector3(0, 0, speed),
-            _ => throw new ArgumentOutOfRangeException()
-        };
-    }
+    // private Vector3 SwitchTranslate()
+    // {
+    //     speed = 3 * Time.deltaTime;
+    //     
+    //     return directionType switch
+    //     {
+    //         DirectionType.RIGHT => new Vector3(-speed, 0, 0),
+    //         DirectionType.LEFT => new Vector3(speed, 0, 0),
+    //         DirectionType.BACKWARD => new Vector3(0, 0, -speed),
+    //         DirectionType.FORWARD => new Vector3(0, 0, speed),
+    //         _ => throw new ArgumentOutOfRangeException()
+    //     };
+    // }
 }
