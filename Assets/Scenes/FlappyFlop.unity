@@ -3632,8 +3632,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sendTimer: 0
   frequency: 10
+  currentDirection: 0
   ground: {fileID: 2204589690701612567, guid: bc795b5bb11e12c479ed23c2241a77e8, type: 3}
   ceiling: {fileID: 6996277488502788528, guid: e02eb87774b022743b045fe4c0300a9c, type: 3}
+  groundObjectMovements: {fileID: 0}
+  ceilingObjectMovements: {fileID: 0}
 --- !u!114 &1884773741
 MonoBehaviour:
   m_ObjectHideFlags: 0

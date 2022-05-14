@@ -17,14 +17,23 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private ObjectMovements groundObjectMovements;
     [SerializeField] private ObjectMovements ceilingObjectMovements;
 
-    // Update is called once per frame
+    private bool started;
+
+    void Awake()
+    {
+        GameManager.onGameStateChanged += StartGame;
+    }
+
     void Update()
     {
-        sendTimer -= Time.deltaTime;
-        if (sendTimer < 0)
+        if (started)
         {
-            GenerateRandomCeilingAndGround();
-            sendTimer = frequency;
+            sendTimer -= Time.deltaTime;
+            if (sendTimer < 0)
+            {
+                GenerateRandomCeilingAndGround();
+                sendTimer = frequency;
+            }
         }
     }
 
@@ -68,5 +77,10 @@ public class TerrainGenerator : MonoBehaviour
         }
 
         return RandomDir() ? DirectionType.BACKWARD : DirectionType.FORWARD;
+    }
+
+    void StartGame(State state)
+    {
+        started = state == State.PLAY;
     }
 }
