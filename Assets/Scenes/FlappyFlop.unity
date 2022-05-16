@@ -3648,8 +3648,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sendTimer: 0
   frequency: 5
-  cheat: 1
+  cheat: 0
   myObstacle: {fileID: 5294471520518487945, guid: ad3f2ebb3b21dc342bbc7d49279f486e, type: 3}
+  myBlockObstacle: {fileID: 2439240996467618910, guid: e42add73252c4df42a578ed3cddc378b, type: 3}
   mainCharacter: {fileID: 428081061}
 --- !u!1 &2064450749
 GameObject:

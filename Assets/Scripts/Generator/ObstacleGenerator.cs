@@ -1,18 +1,19 @@
 using UnityEngine;
+using static Managers.Properties;
 
 public class ObstacleGenerator : MonoBehaviour
 {
     [SerializeField] private float sendTimer = 0;
-    [SerializeField] private float frequency = 5f;
+    [SerializeField] private float frequency = OBSTACLE_FREQUENCY;
     [SerializeField] private bool cheat;
 
     public GameObject myObstacle;
+    public GameObject myBlockObstacle;
     public GameObject mainCharacter;
 
     private bool started;
-    private float minRange = 50f;
-    private float maxRange = 60f;
-    private float mainXPos = 0;
+    private float minRange;
+    private float maxRange;
 
     void Awake()
     {
@@ -33,9 +34,9 @@ public class ObstacleGenerator : MonoBehaviour
             sendTimer -= Time.deltaTime;
             if (sendTimer <= 0)
             {
-                CreateObstacle(mainXPos);
-                CreateObstacle(mainXPos + 50);
-                CreateObstacle(mainXPos - 50);
+                CreateObstacle(0);
+                CreateObstacle(DISTANCE_LEFT);
+                CreateBlockObstacle(-DISTANCE_RIGHT);
 
                 sendTimer = frequency;
             }
@@ -54,19 +55,20 @@ public class ObstacleGenerator : MonoBehaviour
     {
         if (cheat)
         {
-            minRange = 55f;
-            maxRange = 55f;
+            minRange = OBSTACLE_MID_RANGE;
+            maxRange = OBSTACLE_MID_RANGE;
         }
         else
         {
-            minRange = 50f;
-            maxRange = 60f;
+            minRange = OBSTACLE_MIN_RANGE;
+            maxRange = OBSTACLE_MAX_RANGE;
         }
     }
 
-    public void UpdateMainXPos(float xPos)
+    private void CreateBlockObstacle(float xPos)
     {
-        mainXPos = xPos;
+        transform.position = new Vector3(xPos, OBSTACLE_MID_RANGE, 40);
+        Instantiate(myBlockObstacle, transform.position, transform.rotation);
     }
 
     private void CreateObstacle(float xPos)

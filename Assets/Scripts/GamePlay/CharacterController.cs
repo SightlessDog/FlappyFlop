@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Managers.Properties;
 
 public class CharacterController : MonoBehaviour
 {
@@ -74,12 +75,12 @@ public class CharacterController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            gameObject.transform.Translate(-50, 0, 0);
+            gameObject.transform.Translate(-DISTANCE_LEFT, 0, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            gameObject.transform.Translate(50, 0, 0);
+            gameObject.transform.Translate(DISTANCE_RIGHT, 0, 0);
         }
     }
 

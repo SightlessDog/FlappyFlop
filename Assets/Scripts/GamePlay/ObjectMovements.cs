@@ -1,11 +1,9 @@
-using System;
-using Generator;
 using UnityEngine;
-using Random = System.Random;
+using static Managers.Properties;
 
 public class ObjectMovements : MonoBehaviour
 {
-    public float life = 20;
+    [SerializeField] private float life = OBJECT_LIFE_TIME;
     private bool started;
     private bool paused;
     
@@ -46,18 +44,4 @@ public class ObjectMovements : MonoBehaviour
 
         Time.timeScale = 1;
     }
-
-    // private Vector3 SwitchTranslate()
-    // {
-    //     speed = 3 * Time.deltaTime;
-    //     
-    //     return directionType switch
-    //     {
-    //         DirectionType.RIGHT => new Vector3(-speed, 0, 0),
-    //         DirectionType.LEFT => new Vector3(speed, 0, 0),
-    //         DirectionType.BACKWARD => new Vector3(0, 0, -speed),
-    //         DirectionType.FORWARD => new Vector3(0, 0, speed),
-    //         _ => throw new ArgumentOutOfRangeException()
-    //     };
-    // }
 }

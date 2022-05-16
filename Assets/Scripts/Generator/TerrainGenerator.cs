@@ -1,14 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Generator;
 using UnityEngine;
-using Random = System.Random;
+using static Managers.Properties;
 
 public class TerrainGenerator : MonoBehaviour
 {
     [SerializeField] private float sendTimer = 0;
-    [SerializeField] private float frequency = 10f;
+    [SerializeField] private float frequency = TERRAIN_FREQUENCY;
 
     public GameObject ground;
     public GameObject ceiling;
@@ -28,9 +24,9 @@ public class TerrainGenerator : MonoBehaviour
             sendTimer -= Time.deltaTime;
             if (sendTimer < 0)
             {
-                GenerateCeilingAndGround(mainXPos);
-                GenerateCeilingAndGround(mainXPos+50);
-                GenerateCeilingAndGround(mainXPos-50);
+                GenerateCeilingAndGround(0);
+                GenerateCeilingAndGround(DISTANCE_LEFT);
+                GenerateCeilingAndGround(-DISTANCE_RIGHT);
                 sendTimer = frequency;
             }
         }
@@ -41,12 +37,7 @@ public class TerrainGenerator : MonoBehaviour
         Instantiate(ground, new Vector3(xPos, -50, 0), transform.rotation);
         Instantiate(ceiling, new Vector3(xPos, 100, 0), transform.rotation);
     }
-    
-    public void UpdateMainXPos(float xPos)
-    {
-        mainXPos = xPos;
-    }
-    
+
     void StartGame(State state)
     {
         started = state == State.PLAY;
