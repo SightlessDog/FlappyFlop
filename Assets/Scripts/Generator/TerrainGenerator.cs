@@ -21,14 +21,19 @@ public class TerrainGenerator : MonoBehaviour
     {
         if (started)
         {
-            sendTimer -= Time.deltaTime;
-            if (sendTimer < 0)
-            {
-                GenerateCeilingAndGround(0);
-                GenerateCeilingAndGround(DISTANCE_LEFT);
-                GenerateCeilingAndGround(-DISTANCE_RIGHT);
-                sendTimer = frequency;
-            }
+           SendTerrain();
+        }
+    }
+
+    private void SendTerrain()
+    {
+        sendTimer -= Time.deltaTime;
+        if (sendTimer < 0)
+        {
+            GenerateCeilingAndGround(0);
+            GenerateCeilingAndGround(DISTANCE_LEFT);
+            GenerateCeilingAndGround(-DISTANCE_RIGHT);
+            sendTimer = frequency;
         }
     }
 

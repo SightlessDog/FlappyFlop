@@ -210,7 +210,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1884773741}
         m_TargetAssemblyTypeName: ObstacleGenerator, Assembly-CSharp
-        m_MethodName: CheatMode
+        m_MethodName: ToggleCheatMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -222,7 +222,7 @@ MonoBehaviour:
         m_CallState: 1
       - m_Target: {fileID: 428081064}
         m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
-        m_MethodName: CheatMode
+        m_MethodName: ToggleCheatMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

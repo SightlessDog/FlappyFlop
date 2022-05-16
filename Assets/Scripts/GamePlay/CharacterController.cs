@@ -33,16 +33,16 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Pause();
+        SetPause();
         BirdControl();
     }
 
-    public void CheatMode()
+    public void ToggleCheatMode()
     {
         cheat = !cheat;
     }
 
-    private void Pause()
+    private void SetPause()
     {
         if (paused)
         {

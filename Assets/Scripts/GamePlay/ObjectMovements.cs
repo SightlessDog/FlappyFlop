@@ -21,20 +21,27 @@ public class ObjectMovements : MonoBehaviour
     void Update()
     {
         started = GameManager.Instance.started;
-        Pause();
+        SetPause();
 
         if (started)
         {
-            life -= Time.deltaTime;
-            if (life <= 0) Destroy(gameObject);
-            else
-            {
-                transform.Translate(new Vector3(0, 0, 3 * Time.deltaTime));
-            }
+            MoveObject();
         }
     }
 
-    private void Pause()
+    private void MoveObject()
+    {
+        //Destroy object after {life}
+        life -= Time.deltaTime;
+        if (life <= 0) Destroy(gameObject);
+        //Move object towards
+        else
+        {
+            transform.Translate(new Vector3(0, 0, 3 * Time.deltaTime));
+        }
+    }
+
+    private void SetPause()
     {
         if (paused)
         {

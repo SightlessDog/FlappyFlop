@@ -31,22 +31,26 @@ public class ObstacleGenerator : MonoBehaviour
         SetGameVar();
         if (started)
         {
-            sendTimer -= Time.deltaTime;
-            if (sendTimer <= 0)
-            {
-                CreateObstacle(0);
-                CreateObstacle(DISTANCE_LEFT);
-                CreateBlockObstacle(-DISTANCE_RIGHT);
-
-                sendTimer = frequency;
-            }
-
+            SendObstacles();
             if (mainCharacter != null) Time.timeScale = 1;
             else Time.timeScale = 0;
         }
     }
 
-    public void CheatMode()
+    private void SendObstacles()
+    {
+        sendTimer -= Time.deltaTime;
+        if (sendTimer <= 0)
+        {
+            CreateObstacle(0);
+            CreateObstacle(DISTANCE_LEFT);
+            CreateBlockObstacle(-DISTANCE_RIGHT);
+
+            sendTimer = frequency;
+        }
+    }
+
+    public void ToggleCheatMode()
     {
         cheat = !cheat;
     }
