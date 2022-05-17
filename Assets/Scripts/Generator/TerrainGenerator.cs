@@ -26,6 +26,9 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Generate terrain on 3 lines
+    /// </summary>
     private void SendTerrain()
     {
         sendTimer -= Time.deltaTime;
@@ -38,6 +41,10 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Generate both ground and ceiling for the game
+    /// </summary>
+    /// <param name="xPos"></param>
     private void GenerateCeilingAndGround(float xPos)
     {
         Instantiate(ground, new Vector3(xPos, -50, 0), transform.rotation, parent.transform);

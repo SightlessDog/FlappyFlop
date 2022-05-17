@@ -40,11 +40,17 @@ public class CharacterController : MonoBehaviour
         BirdControl();
     }
 
+    /// <summary>
+    /// Toggle cheat mode
+    /// </summary>
     public void ToggleCheatMode()
     {
         cheat = !cheat;
     }
 
+    /// <summary>
+    /// Set pause option for the game
+    /// </summary>
     private void SetPause()
     {
         if (paused)
@@ -58,6 +64,9 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Control the character based on the game mode
+    /// </summary>
     private void BirdControl()
     {
         if (started)
@@ -74,6 +83,10 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ability to let character switch between lines
+    /// Ability lost if the character goes out of bounds
+    /// </summary>
     private void SwitchLine()
     {
         if (IsCharAlive() && Input.GetKeyDown(KeyCode.LeftArrow))
@@ -89,6 +102,10 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Control character in normal mode
+    /// Based on Flappy Bird
+    /// </summary>
     private void NormalBirdControl()
     {
         gameObject.transform.Translate(0, ySpeed, 0);
@@ -100,6 +117,10 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Control character in cheat mode
+    /// Easily control by up and down arrow button
+    /// </summary>
     private void CheatBirdControl()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -113,6 +134,10 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if the character still alive
+    /// </summary>
+    /// <returns></returns>
     private bool IsCharAlive()
     {
         if (currentState > 1 || currentState < -1)
