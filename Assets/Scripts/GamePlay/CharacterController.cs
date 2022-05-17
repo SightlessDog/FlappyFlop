@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using GamePlay;
 using UnityEngine;
 using static Managers.Properties;
 
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] private bool cheat;
-
-    public float ySpeed;
-    public float yTarget;
-
+    [SerializeField] private float ySpeed;
+    [SerializeField] private float yTarget;
+    
+    public int currentState;
+    
     private bool started;
     private bool paused;
 
     void Awake()
     {
+        currentState = 0;
         cheat = false;
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
@@ -73,14 +76,16 @@ public class CharacterController : MonoBehaviour
 
     private void SwitchLine()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (IsCharAlive() && Input.GetKeyDown(KeyCode.LeftArrow))
         {
             gameObject.transform.Translate(-DISTANCE_LEFT, 0, 0);
+            currentState--;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (IsCharAlive() && Input.GetKeyDown(KeyCode.RightArrow))
         {
             gameObject.transform.Translate(DISTANCE_RIGHT, 0, 0);
+            currentState++;
         }
     }
 
@@ -88,8 +93,8 @@ public class CharacterController : MonoBehaviour
     {
         gameObject.transform.Translate(0, ySpeed, 0);
         ySpeed = Mathf.Lerp(ySpeed, yTarget, 0.025f);
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        
+        if (IsCharAlive() && Input.GetKeyDown(KeyCode.Space))
         {
             ySpeed = 0.25f;
         }
@@ -105,6 +110,18 @@ public class CharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             gameObject.transform.Translate(0, -0.5f, 0);
+        }
+    }
+
+    private bool IsCharAlive()
+    {
+        if (currentState > 1 || currentState < -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 }
