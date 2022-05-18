@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 683718356}
   - component: {fileID: 683718355}
   - component: {fileID: 683718354}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CeilingZone
   m_TagString: Env
   m_Icon: {fileID: 0}
@@ -1161,7 +1161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2062,10 +2062,10 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   - component: {fileID: 963194231}
-  m_Layer: 0
+  - component: {fileID: 963194232}
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2130,28 +2130,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.0021728226, y: 0.98472214, z: -0.17368317, w: 0.012319131}
-  m_LocalPosition: {x: 19.63942, y: -3.249157, z: 11.50997}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1084852525}
+  m_Father: {fileID: 1843930443}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 19.999, y: 178.474, z: -0.522}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9f2b50cd88d6d4a9920d0325ce5972, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 543450652268816020}
-  smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: 10}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2308,6 +2293,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf79b9d1ca73db4f816bf234a583a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &980583464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2915,12 +2912,12 @@ Transform:
   m_LocalPosition: {x: -23.73942, y: 27.528156, z: 28.188032}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 963194228}
+  - {fileID: 1843930443}
   - {fileID: 705507995}
   - {fileID: 158262775}
   - {fileID: 1884773739}
-  - {fileID: 543450652268816020}
   - {fileID: 5305448504582969403}
+  - {fileID: 543450652268816020}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3968,6 +3965,53 @@ Transform:
   m_Father: {fileID: 653396928}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1843930442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1843930443}
+  - component: {fileID: 1843930444}
+  m_Layer: 2
+  m_Name: CameraHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1843930443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843930442}
+  m_LocalRotation: {x: -0.0021728226, y: 0.98472214, z: -0.17368317, w: 0.012319131}
+  m_LocalPosition: {x: 19.63942, y: -3.249157, z: 11.50997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 963194228}
+  m_Father: {fileID: 1084852525}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1843930444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843930442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9f2b50cd88d6d4a9920d0325ce5972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 543450652268816020}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 0, z: 10}
 --- !u!1 &1884773738
 GameObject:
   m_ObjectHideFlags: 0
@@ -4334,7 +4378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5305448504582969403}
   - component: {fileID: 2622851714696393367}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DeadZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4355,7 +4399,7 @@ Transform:
   - {fileID: 5305448505585822857}
   - {fileID: 683718353}
   m_Father: {fileID: 1084852525}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5305448505585822856
 Rigidbody:
@@ -4463,7 +4507,7 @@ GameObject:
   - component: {fileID: 5305448505585822858}
   - component: {fileID: 5305448505585822859}
   - component: {fileID: 5305448505585822856}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GroundZone
   m_TagString: Env
   m_Icon: {fileID: 0}
@@ -4487,7 +4531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6558445589426051404, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6558445589426051404, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4529,6 +4573,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6669548467385990746, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 963194232}
     - target: {fileID: 6669548467385990746, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
       propertyPath: checkpointPassed
       value: 
