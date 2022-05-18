@@ -1161,7 +1161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2065,7 +2065,8 @@ GameObject:
   - component: {fileID: 963194230}
   - component: {fileID: 963194231}
   - component: {fileID: 963194232}
-  m_Layer: 2
+  - component: {fileID: 963194229}
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2137,6 +2138,18 @@ Transform:
   m_Father: {fileID: 1843930443}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 19.999, y: 178.474, z: -0.522}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d370f3224e48814badebad1fd4d29a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3975,7 +3988,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1843930443}
   - component: {fileID: 1843930444}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4076,7 +4089,7 @@ MonoBehaviour:
   sendTimer: 0
   frequency: 5
   sendBlockTimer: 3
-  cheat: 0
+  cheat: 1
   parent: {fileID: 0}
   currentCharacterState: 0
   myObstacle: {fileID: 5294471520518487945, guid: ad3f2ebb3b21dc342bbc7d49279f486e, type: 3}
@@ -4521,9 +4534,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1084852525}
     m_Modifications:
+    - target: {fileID: 1616255158250696988, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982335249408902290, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982466437562466692, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5787010276172219382, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
       propertyPath: m_Name
       value: Flying bird
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787010276172219382, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5787010276172219382, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
       propertyPath: m_TagString

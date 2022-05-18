@@ -17,13 +17,9 @@ public class Collision : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Physics.Raycast(transform.position, transform.forward, 50))
+        if (Physics.Raycast(transform.position, transform.forward, 25))
         {
-            Debug.Log("There is something in front of the object");
-        }
-        else
-        {
-            Debug.Log("There is nothing");
+               
         }
     }
     
