@@ -14,15 +14,6 @@ public class Collision : MonoBehaviour
     {
         audioSource = gameObject.GetComponent<AudioSource>();
     }
-
-    void FixedUpdate()
-    {
-        if (Physics.Raycast(transform.position, transform.forward, 25))
-        {
-               
-        }
-    }
-    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Env")
@@ -34,7 +25,7 @@ public class Collision : MonoBehaviour
         else if (other.gameObject.tag == "Checkpoint")
         {
             Debug.Log("Passed through a checkpoint");
-            StartCoroutine(cameraShake.Shake(.06f, .6f));
+            StartCoroutine(cameraShake.Shake(.03f, .3f));
             audioSource.PlayOneShot(checkpointPassed);
             onCollisionWithCheckpoint?.Invoke();
         }
