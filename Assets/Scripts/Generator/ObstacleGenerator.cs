@@ -183,32 +183,13 @@ public class ObstacleGenerator : MonoBehaviour
     }
 
     /// <summary>
-    /// Return current state of the character
-    /// </summary>
-    private CharacterState GetCurrentCharacterState()
-    {
-        if (mainCharacter != null)
-        {
-            var stateNum = mainCharacter.GetComponent<CharacterController>().currentState;
-            return stateNum switch
-            {
-                0 => MIDDLE,
-                1 => RIGHT,
-                -1 => LEFT,
-                _ => DEAD
-            };
-        }
-        else
-        {
-            return DEAD;
-        }
-    }
-
-    /// <summary>
     /// Update current State of the character
     /// </summary>
     private void UpdateCurrentCharacterState()
     {
-        currentCharacterState = GetCurrentCharacterState();
+        if (mainCharacter != null)
+        {
+            currentCharacterState = mainCharacter.GetComponent<CharacterController>().currentState;
+        }
     }
 }

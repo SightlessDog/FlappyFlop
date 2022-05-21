@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GamePlay;
 using UnityEngine;
+using static GamePlay.CharacterState;
 using static Managers.Properties;
 
 public class CharacterController : MonoBehaviour
@@ -10,14 +11,15 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float ySpeed;
     [SerializeField] private float yTarget;
     
-    public int currentState;
+    public CharacterState currentState;
     
+    private int currentStateIndex;
     private bool started;
     private bool paused;
 
     void Awake()
     {
-        currentState = 0;
+        currentStateIndex = 0;
         cheat = false;
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
@@ -38,6 +40,7 @@ public class CharacterController : MonoBehaviour
     {
         SetPause();
         BirdControl();
+        currentState = GetCurrentCharacterState();
     }
 
     /// <summary>
@@ -89,16 +92,16 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void SwitchLine()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && currentState > -1)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && currentStateIndex > -1)
         {
             gameObject.transform.Translate(-DISTANCE_LEFT, 0, 0);
-            currentState--;
+            currentStateIndex--;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && currentState < 1)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && currentStateIndex < 1)
         {
             gameObject.transform.Translate(DISTANCE_RIGHT, 0, 0);
-            currentState++;
+            currentStateIndex++;
         }
     }
 
@@ -132,5 +135,19 @@ public class CharacterController : MonoBehaviour
         {
             gameObject.transform.Translate(0, -1f, 0);
         }
+    }
+    
+    /// <summary>
+    /// Return current state of the character
+    /// </summary>
+    private CharacterState GetCurrentCharacterState()
+    {
+        return currentStateIndex switch
+            {
+                0 => MIDDLE,
+                1 => RIGHT,
+                -1 => LEFT,
+                _ => DEAD
+            };
     }
 }
