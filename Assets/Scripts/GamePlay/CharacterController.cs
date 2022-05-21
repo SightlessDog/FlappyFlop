@@ -89,13 +89,13 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void SwitchLine()
     {
-        if (IsCharAlive() && Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && currentState > -1)
         {
             gameObject.transform.Translate(-DISTANCE_LEFT, 0, 0);
             currentState--;
         }
 
-        if (IsCharAlive() && Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && currentState < 1)
         {
             gameObject.transform.Translate(DISTANCE_RIGHT, 0, 0);
             currentState++;
@@ -111,7 +111,7 @@ public class CharacterController : MonoBehaviour
         gameObject.transform.Translate(0, ySpeed, 0);
         ySpeed = Mathf.Lerp(ySpeed, yTarget, 0.025f);
         
-        if (IsCharAlive() && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             ySpeed = 0.25f;
         }
@@ -131,22 +131,6 @@ public class CharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             gameObject.transform.Translate(0, -0.5f, 0);
-        }
-    }
-
-    /// <summary>
-    /// Check if the character still alive
-    /// </summary>
-    /// <returns></returns>
-    private bool IsCharAlive()
-    {
-        if (currentState > 1 || currentState < -1)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
         }
     }
 }
