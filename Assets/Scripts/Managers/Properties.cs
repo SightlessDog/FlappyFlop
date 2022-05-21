@@ -12,8 +12,8 @@
         public const int BLOCK_OBSTACLE_FREQUENCY = 2;
 
         //Obstacle yPos
-        public const float OBSTACLE_MIN_RANGE = 50f;
-        public const float OBSTACLE_MAX_RANGE = 60f;
+        public const float OBSTACLE_MIN_RANGE = 47f;
+        public const float OBSTACLE_MAX_RANGE = 63f;
         public const float OBSTACLE_MID_RANGE = 55f;
 
         //Object life time

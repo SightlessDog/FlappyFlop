@@ -125,12 +125,12 @@ public class CharacterController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            gameObject.transform.Translate(0, 0.5f, 0);
+            gameObject.transform.Translate(0, 1f, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            gameObject.transform.Translate(0, -0.5f, 0);
+            gameObject.transform.Translate(0, -1f, 0);
         }
     }
 }
