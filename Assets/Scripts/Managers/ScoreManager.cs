@@ -13,13 +13,13 @@ public class ScoreManager : MonoBehaviour
 
     void Awake()
     {
-        Collision.onCollisionWithCheckpoint += IncreaseScore;
+        Col.onCollisionWithCheckpoint += IncreaseScore;
         GameManager.onGameStateChanged += UpdateHighScore;
     }
 
-    void Destroy ()
+    void OnDestroy ()
     {  
-        Collision.onCollisionWithCheckpoint -= IncreaseScore;
+        Col.onCollisionWithCheckpoint -= IncreaseScore;
         GameManager.onGameStateChanged -= UpdateHighScore;
     }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -59,10 +60,14 @@ public class GameManager : MonoBehaviour
 
   private void Update()
   {
-    if (Input.GetKeyDown("escape"))
+    if (Input.GetKeyDown("escape") && state != State.GAMEOVER)
     {
       paused = !paused;
       UpdateGameState(paused ? State.PAUSE : State.PLAY);
+    }
+    else if (Input.GetKeyDown("escape") && state == State.GAMEOVER)
+    {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
   }
 }

@@ -24,7 +24,7 @@ public class CharacterController : MonoBehaviour
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
 
-    void onDestroy()
+    void OnDestroy()
     {
         GameManager.onGameStateChanged -= GameManagerOnGameStateChanged;
     }

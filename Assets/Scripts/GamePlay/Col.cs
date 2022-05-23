@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collision : MonoBehaviour
+public class Col : MonoBehaviour
 {
     public static event Action onCollisionWithCheckpoint;
     public AudioClip checkpointPassed; 
@@ -14,20 +14,24 @@ public class Collision : MonoBehaviour
     {
         audioSource = gameObject.GetComponent<AudioSource>();
     }
-    private void OnCollisionEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Env")
-        {
-            Destroy(gameObject);
-            Debug.Log("Collision and object destroyed");
-            GameManager.Instance.UpdateGameState(State.GAMEOVER);
-        } 
-        else if (other.gameObject.tag == "Checkpoint")
+        if (collision.collider.gameObject.CompareTag("Checkpoint"))
         {
             Debug.Log("Passed through a checkpoint");
             StartCoroutine(cameraShake.Shake(.03f, .3f));
             audioSource.PlayOneShot(checkpointPassed);
             onCollisionWithCheckpoint?.Invoke();
+        }
+    }
+    
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("Env"))
+        {
+            Destroy(gameObject);
+            Debug.Log("Collision and object destroyed");
+            GameManager.Instance.UpdateGameState(State.GAMEOVER);
         }
     }
 }

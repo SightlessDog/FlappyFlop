@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: c0e28f48a0483a443ac879564e25cb70
-  - enabled: 1
-    path: Assets/Scenes/FlappyFlop.unity
+    path: Assets/Scenes/FlappyFlop/FlappyFlop.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

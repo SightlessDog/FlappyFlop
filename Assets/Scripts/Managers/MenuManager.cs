@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
 
-    void onDestroy()
+    void OnDestroy()
     {
         GameManager.onGameStateChanged -= GameManagerOnGameStateChanged;
     }

@@ -30,7 +30,7 @@ public class ObstacleGenerator : MonoBehaviour
         GameManager.onGameStateChanged += StartGame;
     }
 
-    void Destroy()
+    void OnDestroy()
     {
         GameManager.onGameStateChanged -= StartGame;
     }
