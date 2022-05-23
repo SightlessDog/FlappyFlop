@@ -14,7 +14,7 @@ public class Collision : MonoBehaviour
     {
         audioSource = gameObject.GetComponent<AudioSource>();
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collider other)
     {
         if (other.gameObject.tag == "Env")
         {
