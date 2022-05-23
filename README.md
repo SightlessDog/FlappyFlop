@@ -30,4 +30,4 @@ Project for GTAT1 course / SoSe 20202/ IMI - HTW Berlin
 
 - [ ] Verwendung von geseedetem Noise für Interaktion (z.B. Spawning)
 
-- [ ] Physics.Raycast und MonoBehaviour.OnCollision verwendet
+- [x] Physics.Raycast und MonoBehaviour.OnCollision verwendet
