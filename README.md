@@ -24,7 +24,7 @@ Project for GTAT1 course / SoSe 20202/ IMI - HTW Berlin
 
 ## Bonuspunkte (maximal 2 Stück werden gewertet)
 
-- [ ] einstellbare Schwierigkeit
+- [x] einstellbare Schwierigkeit
 
 - [ ] “smarte” Nutzung von Physics
 
