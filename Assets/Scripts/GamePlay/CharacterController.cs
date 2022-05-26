@@ -17,6 +17,7 @@ public class CharacterController : MonoBehaviour
     private bool started;
     private bool paused;
 
+    // Subscribe the event on awake
     void Awake()
     {
         currentStateIndex = 0;
@@ -24,11 +25,13 @@ public class CharacterController : MonoBehaviour
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
 
+    // Unsubscribe the event
     void OnDestroy()
     {
         GameManager.onGameStateChanged -= GameManagerOnGameStateChanged;
     }
 
+    // The event handler
     private void GameManagerOnGameStateChanged(State state)
     {
         started = state == State.PLAY;

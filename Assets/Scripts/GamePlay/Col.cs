@@ -19,7 +19,10 @@ public class Col : MonoBehaviour
         if (collision.collider.gameObject.CompareTag("Checkpoint"))
         {
             Debug.Log("Passed through a checkpoint");
-            StartCoroutine(cameraShake.Shake(.02f, .2f));
+            // If the previous coroutine still running stop it
+            StopAllCoroutines();
+            // Shake the camera
+            StartCoroutine(cameraShake.Shake(.03f, .3f));
             audioSource.PlayOneShot(checkpointPassed);
             onCollisionWithCheckpoint?.Invoke();
         }

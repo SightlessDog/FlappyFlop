@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CamerShake : MonoBehaviour
 {
+    // Use coroutine to make the animation run over multiple frames and not block the calling method
     public IEnumerator Shake(float duration, float magnitude)
     {
         Vector3 origPosition = transform.localPosition;

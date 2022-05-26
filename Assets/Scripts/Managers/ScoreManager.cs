@@ -11,12 +11,14 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
     public Text highScoreText;
 
+    // Subscribe the event on awake
     void Awake()
     {
         Col.onCollisionWithCheckpoint += IncreaseScore;
         GameManager.onGameStateChanged += UpdateHighScore;
     }
 
+    // Unsubscribe to avoid memory leaks
     void OnDestroy ()
     {  
         Col.onCollisionWithCheckpoint -= IncreaseScore;
@@ -35,6 +37,7 @@ public class ScoreManager : MonoBehaviour
         highScoreText.text = "High Score: " + highScore;
     }
 
+    // Persist high score
     void UpdateHighScore(State state)
     {
         if (state == State.GAMEOVER)

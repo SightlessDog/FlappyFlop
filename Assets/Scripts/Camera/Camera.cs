@@ -24,6 +24,7 @@ public class Camera : MonoBehaviour
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
 
+    // To make sure that the camera movement is gonna happen last
     void LateUpdate()
     {
         if (mainCharacter != null)
@@ -36,6 +37,7 @@ public class Camera : MonoBehaviour
         }
     }
 
+    // Make the camera follow the bird
     private void SetCamPosition()
     {
         Vector3 desiredPosition = mainCharacter.transform.position + offset;

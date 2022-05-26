@@ -9,6 +9,8 @@ public class GroundColorLerp : MonoBehaviour
     [SerializeField] private Color[] colors;
     private int colorIndex = 0;
     private float t = 0f;
+    
+    // TODO this component is very very very weird, it doesn't get applied to the renderer
     // Start is called before the first frame update
     void Start()
     {

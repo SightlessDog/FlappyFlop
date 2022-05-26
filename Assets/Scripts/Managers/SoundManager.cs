@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
         Load();
     }
     
-    // Start is called before the first frame update
+    // Get the already saved volume if it exists, if not then set it
     void Start()
     {
         if (!PlayerPrefs.HasKey("musicVolume"))
@@ -37,7 +37,7 @@ public class SoundManager : MonoBehaviour
         volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
         AudioListener.volume = volumeSlider.value;
     }
-
+    
     private void Save()
     {
         PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);

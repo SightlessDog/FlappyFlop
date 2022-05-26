@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using static Managers.Properties;
 
@@ -7,9 +8,16 @@ public class ObjectMovements : MonoBehaviour
     private bool started;
     private bool paused;
     
+    // Subscribe the event on awake
     void Awake()
     {
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
+    }
+    
+    // Unsubscribe on destroy
+    private void OnDestroy()
+    {
+        GameManager.onGameStateChanged -= GameManagerOnGameStateChanged;
     }
 
     private void GameManagerOnGameStateChanged(State state)

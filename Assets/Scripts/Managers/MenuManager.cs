@@ -7,11 +7,13 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject gameOverPanel;
 
+    // Subscribe the event on awake
     void Awake()
     {
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
 
+    // Unsubscribe to avoid memory leaks
     void OnDestroy()
     {
         GameManager.onGameStateChanged -= GameManagerOnGameStateChanged;
