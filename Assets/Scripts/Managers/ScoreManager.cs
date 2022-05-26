@@ -25,7 +25,7 @@ public class ScoreManager : MonoBehaviour
 
     void IncreaseScore()
     {
-        score += score + 10;
+        score += 10;
         UpdateScoreDisplay();
     }
     
