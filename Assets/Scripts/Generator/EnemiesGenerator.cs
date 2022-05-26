@@ -44,7 +44,6 @@ public class EnemiesGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetGameVar();
         UpdateCurrentCharacterState();
         if (started)
         {
@@ -80,16 +79,13 @@ public class EnemiesGenerator : MonoBehaviour
             switch (currentCharacterState)
             {
                 case MIDDLE:
-                    CreateEnemies(DISTANCE_LEFT);
-                    //CreateEnemies(-DISTANCE_RIGHT);
+                    CreateEnemies(0);
                     break;
                 case LEFT:
-                    CreateEnemies(0);
-                    //CreateEnemies(-DISTANCE_RIGHT);
+                    CreateEnemies(DISTANCE_LEFT);
                     break;
                 case RIGHT:
-                    CreateEnemies(0);
-                    //CreateEnemies(DISTANCE_LEFT);
+                    CreateEnemies(DISTANCE_RIGHT);
                     break;
                 case DEAD:
                     break;
@@ -114,33 +110,16 @@ public class EnemiesGenerator : MonoBehaviour
     {
         cheat = !cheat;
     }
-
-    /// <summary>
-    /// Set the y position variable for the obstacles
-    /// Cheat mode will keep the obstacle static
-    /// </summary>
-    private void SetGameVar()
-    {
-        if (cheat)
-        {
-            minRange = OBSTACLE_MID_RANGE;
-            maxRange = OBSTACLE_MID_RANGE;
-        }
-        else
-        {
-            minRange = OBSTACLE_MIN_RANGE;
-            maxRange = OBSTACLE_MAX_RANGE;
-        }
-    }
+    
 
     /// <summary>
     /// Create enemies 
     /// </summary>
     private void CreateEnemies(float xPos)
     {
-        //yPos will be random generated between minRange & maxRange
-        var yPos = Random.Range(minRange, maxRange);
-        transform.position = new Vector3(xPos, yPos, 20);
+        //yPos will be the same place as BlockObstacle
+        //var yPos = Random.Range(minRange, maxRange);
+        transform.position = new Vector3(xPos, ENEMY_MID_RANGE, 20);
         Instantiate(myEnemy, transform.position, transform.rotation, parent.transform);
     }
 
