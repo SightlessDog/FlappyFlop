@@ -4972,6 +4972,7 @@ GameObject:
   - component: {fileID: 1884773739}
   - component: {fileID: 1884773740}
   - component: {fileID: 1884773741}
+  - component: {fileID: 1884773742}
   m_Layer: 0
   m_Name: sender
   m_TagString: Untagged
@@ -5029,6 +5030,27 @@ MonoBehaviour:
   parent: {fileID: 0}
   currentCharacterState: 0
   myObstacle: {fileID: 5294471520518487945, guid: ad3f2ebb3b21dc342bbc7d49279f486e, type: 3}
+  myBlockObstacle: {fileID: 2439240996467618910, guid: e42add73252c4df42a578ed3cddc378b, type: 3}
+  mainCharacter: {fileID: 428081061}
+--- !u!114 &1884773742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884773738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29da8fdeb8f7cb04f90c9778a132834a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendTimer: 0
+  frequency: 5
+  sendBlockTimer: 3
+  cheat: 0
+  parent: {fileID: 0}
+  currentCharacterState: 0
+  myEnemy: {fileID: 2669465537155562399, guid: 9c3ba7227707a274fbac942fe90e78d0, type: 3}
   myBlockObstacle: {fileID: 2439240996467618910, guid: e42add73252c4df42a578ed3cddc378b, type: 3}
   mainCharacter: {fileID: 428081061}
 --- !u!1 &1896550706
