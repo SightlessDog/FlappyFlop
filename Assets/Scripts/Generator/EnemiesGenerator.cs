@@ -79,13 +79,13 @@ public class EnemiesGenerator : MonoBehaviour
             switch (currentCharacterState)
             {
                 case MIDDLE:
-                    CreateEnemies(0);
+                    CreateEnemies(myEnemy.transform.position.x);
                     break;
                 case LEFT:
-                    CreateEnemies(DISTANCE_LEFT);
+                    CreateEnemies(myEnemy.transform.position.x);
                     break;
                 case RIGHT:
-                    CreateEnemies(DISTANCE_RIGHT);
+                    CreateEnemies(myEnemy.transform.position.x);
                     break;
                 case DEAD:
                     break;
@@ -97,9 +97,9 @@ public class EnemiesGenerator : MonoBehaviour
         }
         else
         {
-            CreateEnemies(0);
-            CreateEnemies(DISTANCE_LEFT);
-            CreateEnemies(-DISTANCE_RIGHT);
+            CreateEnemies(myEnemy.transform.position.x);
+            //CreateEnemies(myEnemy.transform.position.x);
+            //CreateEnemies(myEnemy.transform.position.x);
         }
     }
 
@@ -117,9 +117,9 @@ public class EnemiesGenerator : MonoBehaviour
     /// </summary>
     private void CreateEnemies(float xPos)
     {
-        //yPos will be the same place as BlockObstacle
-        //var yPos = Random.Range(minRange, maxRange);
-        transform.position = new Vector3(xPos, ENEMY_MID_RANGE, 20);
+        //yPos will be random generated between minRange & maxRange
+        var yPos = Random.Range(minRange, maxRange);
+        transform.position = new Vector3(xPos, yPos, 40);
         Instantiate(myEnemy, transform.position, transform.rotation, parent.transform);
     }
 
