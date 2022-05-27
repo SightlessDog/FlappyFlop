@@ -10,10 +10,12 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private bool cheat;
     [SerializeField] private float ySpeed;
     [SerializeField] private float yTarget;
-    
+    [SerializeField] private float yBoost = 0f;
+
     public CharacterState currentState;
     
     private int currentStateIndex;
+    private int checkpoints;
     private bool started;
     private bool paused;
 
@@ -114,12 +116,13 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void NormalBirdControl()
     {
+        ChangeSpeedAccordingToCheckpoints();
         gameObject.transform.Translate(0, ySpeed, 0);
         ySpeed = Mathf.Lerp(ySpeed, yTarget, 0.025f);
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ySpeed = 0.25f;
+            ySpeed = 0.25f + yBoost;
         }
     }
 
@@ -152,5 +155,19 @@ public class CharacterController : MonoBehaviour
                 -1 => LEFT,
                 _ => DEAD
             };
+    }
+
+    /// <summary>
+    /// Increase the jumping boost as the player progresses 
+    /// </summary>
+    void ChangeSpeedAccordingToCheckpoints()
+    {
+        checkpoints = GetComponent<Col>().checkpoints;
+        if (checkpoints < 2) yBoost = 0f;
+        else if (checkpoints < 4) yBoost = 0.05f;
+        else if (checkpoints < 6) yBoost = 0.1f;
+        else if (checkpoints < 8) yBoost = 0.15f;
+        else yBoost = 0.2f;
+
     }
 }

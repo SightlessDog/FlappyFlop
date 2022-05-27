@@ -9,6 +9,7 @@ public class Col : MonoBehaviour
     public AudioClip checkpointPassed; 
     AudioSource audioSource;
     public CamerShake cameraShake;
+    public int checkpoints = 0;
 
     void Awake()
     {
@@ -19,6 +20,7 @@ public class Col : MonoBehaviour
         if (collision.collider.gameObject.CompareTag("Checkpoint"))
         {
             Debug.Log("Passed through a checkpoint");
+            checkpoints++;
             // If the previous coroutine still running stop it
             StopAllCoroutines();
             // Shake the camera
