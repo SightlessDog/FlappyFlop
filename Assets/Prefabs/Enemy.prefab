@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2669465537155562386}
   - component: {fileID: 2669465537155562385}
   - component: {fileID: 2669465537155562384}
-  - component: {fileID: 5047003396661047169}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -114,24 +113,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5047003396661047169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2669465537155562399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29da8fdeb8f7cb04f90c9778a132834a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sendTimer: 0
-  frequency: 4
-  sendBlockTimer: 2
-  cheat: 0
-  parent: {fileID: 0}
-  currentCharacterState: 0
-  myEnemy: {fileID: 0}
-  myBlockObstacle: {fileID: 0}
-  mainCharacter: {fileID: 0}

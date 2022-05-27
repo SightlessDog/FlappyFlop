@@ -10,13 +10,12 @@ public class EnemiesGenerator : MonoBehaviour
     [SerializeField] private float sendTimer = 0;
     // Use the same frequency
     [SerializeField] private float frequency = OBSTACLE_FREQUENCY;
-    [SerializeField] private int sendBlockTimer = BLOCK_OBSTACLE_FREQUENCY;
     [SerializeField] private bool cheat;
     [SerializeField] private GameObject parent;
     [SerializeField] private CharacterState currentCharacterState;
 
     public GameObject myEnemy;
-    public GameObject myBlockObstacle;
+    public GameObject myObstacle;
     public GameObject mainCharacter;
 
     private bool started;
@@ -44,10 +43,10 @@ public class EnemiesGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetGameVar();
         UpdateCurrentCharacterState();
         if (started)
         {
+            // Create no enemies in cheat mode
             if (!cheat)
             {
                 SendEnemies();
@@ -76,11 +75,6 @@ public class EnemiesGenerator : MonoBehaviour
 
     private void GenerateEnemies()
     {
-        //A block obstacle will be sent when the timer reached 0 to force player to switch to another line
-        sendBlockTimer--;
-        if (sendBlockTimer == 0)
-        {
-
             switch (currentCharacterState)
             {
                 case MIDDLE:
@@ -97,8 +91,6 @@ public class EnemiesGenerator : MonoBehaviour
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            sendBlockTimer = BLOCK_OBSTACLE_FREQUENCY;
-        }
     }
 
     /// <summary>
@@ -116,7 +108,7 @@ public class EnemiesGenerator : MonoBehaviour
     private void CreateEnemies(float xPos)
     {
         //yPos will be ENEMY_MID_RANGE
-        transform.position = new Vector3(xPos, ENEMY_MID_RANGE, 40);
+        transform.position = new Vector3(xPos, myObstacle.transform.localScale.y/2 + 3f , 40f);
         Instantiate(myEnemy, transform.position, transform.rotation, parent.transform);
     }
 
@@ -128,24 +120,6 @@ public class EnemiesGenerator : MonoBehaviour
         if (mainCharacter != null)
         {
             currentCharacterState = mainCharacter.GetComponent<CharacterController>().currentState;
-        }
-    }
-
-    /// <summary>
-    /// Set the y position variable for the obstacles
-    /// Cheat mode will keep the obstacle static
-    /// </summary>
-    private void SetGameVar()
-    {
-        if (cheat)
-        {
-            minRange = ENEMY_MID_RANGE;
-            maxRange = ENEMY_MID_RANGE;
-        }
-        else
-        {
-            minRange = ENEMY_MIN_RANGE;
-            maxRange = ENEMY_MAX_RANGE;
         }
     }
 }
