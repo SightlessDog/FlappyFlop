@@ -51,11 +51,6 @@ public class EnemiesGenerator : MonoBehaviour
             {
                 SendEnemies();
             }
-            // Stop sending enemies when the character is dead
-            if (mainCharacter != null)
-                Time.timeScale = 1;
-            else
-                Time.timeScale = 0;
         }
     }
 

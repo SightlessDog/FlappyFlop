@@ -47,9 +47,6 @@ public class ObstacleGenerator : MonoBehaviour
         if (started)
         {
             SendObstacles();
-            //Stop sending obstacles when the character is dead
-            if (mainCharacter != null) Time.timeScale = 1;
-            else Time.timeScale = 0;
         }
     }
 

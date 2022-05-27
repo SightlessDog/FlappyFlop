@@ -29,7 +29,7 @@ public class ObjectMovements : MonoBehaviour
     void Update()
     {
         started = GameManager.Instance.started;
-        SetPause();
+        TimeController();
 
         if (started)
         {
@@ -48,8 +48,8 @@ public class ObjectMovements : MonoBehaviour
             transform.Translate(new Vector3(0, 0, 3 * Time.deltaTime));
         }
     }
-
-    private void SetPause()
+    
+    private void TimeController()
     {
         if (paused)
         {
@@ -57,6 +57,6 @@ public class ObjectMovements : MonoBehaviour
             return;
         }
 
-        Time.timeScale = 1;
+        Time.timeScale = GameManager.Instance.gameSpeed;
     }
 }

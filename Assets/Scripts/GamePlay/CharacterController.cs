@@ -17,7 +17,6 @@ public class CharacterController : MonoBehaviour
     private int currentStateIndex;
     private int checkpoints;
     private bool started;
-    private bool paused;
 
     // Subscribe the event on awake
     void Awake()
@@ -37,13 +36,11 @@ public class CharacterController : MonoBehaviour
     private void GameManagerOnGameStateChanged(State state)
     {
         started = state == State.PLAY;
-        paused = state == State.PAUSE;
     }
 
     // Update is called once per frame
     void Update()
     {
-        SetPause();
         BirdControl();
         currentState = GetCurrentCharacterState();
     }
@@ -54,22 +51,6 @@ public class CharacterController : MonoBehaviour
     public void ToggleCheatMode()
     {
         cheat = !cheat;
-    }
-
-    /// <summary>
-    /// Set pause option for the game
-    /// </summary>
-    private void SetPause()
-    {
-        if (paused)
-        {
-            Time.timeScale = 0;
-            return;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
     }
 
     /// <summary>
