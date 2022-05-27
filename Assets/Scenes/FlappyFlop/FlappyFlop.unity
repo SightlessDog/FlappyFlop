@@ -3532,7 +3532,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1039449435}
-  - component: {fileID: 1039449434}
   - component: {fileID: 1039449436}
   m_Layer: 0
   m_Name: MenuManager
@@ -3541,18 +3540,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1039449434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039449433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b880166c507be44983ccd2c2dd18a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1039449435
 Transform:
   m_ObjectHideFlags: 0
@@ -4885,7 +4872,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 10}
   speed: 30
   zRot: 0
-  hardMode: 1
+  hardMode: 0
 --- !u!1 &1867829961
 GameObject:
   m_ObjectHideFlags: 0
@@ -5026,7 +5013,7 @@ MonoBehaviour:
   sendTimer: 0
   frequency: 5
   sendBlockTimer: 3
-  cheat: 0
+  cheat: 1
   parent: {fileID: 0}
   currentCharacterState: 0
   myObstacle: {fileID: 5294471520518487945, guid: ad3f2ebb3b21dc342bbc7d49279f486e, type: 3}
