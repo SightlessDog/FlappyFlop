@@ -1,26 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using GamePlay;
 using UnityEngine;
-using static GamePlay.CharacterState;
 
-public class Camera : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     public GameObject mainCharacter;
     [SerializeField] private float smoothSpeed = 0.125f;
     [SerializeField] private Vector3 offset;
     [SerializeField] private float speed = 30.0f;
     [SerializeField] private float zRot = 0.0f;
-    [SerializeField] private bool hardMode;
+    [SerializeField] private bool spinMode;
 
     private bool started;
     private bool paused;
 
     private void Awake()
     {
-        hardMode = false;
+        spinMode = false;
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
 
@@ -29,7 +23,7 @@ public class Camera : MonoBehaviour
     {
         if (mainCharacter != null)
         {
-            if (hardMode && started && !paused)
+            if (spinMode && started && !paused)
             {
                 SetZRotation();
             }
@@ -37,7 +31,9 @@ public class Camera : MonoBehaviour
         }
     }
 
-    // Make the camera follow the bird
+    /// <summary>
+    /// Set camera position based on the character current position
+    /// </summary>
     private void SetCamPosition()
     {
         Vector3 desiredPosition = mainCharacter.transform.position + offset;
@@ -48,6 +44,9 @@ public class Camera : MonoBehaviour
         transform.Rotate(0, 0, zRot);
     }
 
+    /// <summary>
+    /// Adjust z rotation during the time 
+    /// </summary>
     private void SetZRotation()
     {
         if (zRot > 360f)
@@ -59,11 +58,18 @@ public class Camera : MonoBehaviour
         zRot += delta;
     }
 
-    public void ToggleHardMode()
+    /// <summary>
+    /// Toggle Spin mode via Configuration
+    /// </summary>
+    public void ToggleSpinMode()
     {
-        hardMode = !hardMode;
+        spinMode = !spinMode;
     }
     
+    /// <summary>
+    /// get current game state
+    /// </summary>
+    /// <param name="state"></param>
     private void GameManagerOnGameStateChanged(State state)
     {
         started = state == State.PLAY;

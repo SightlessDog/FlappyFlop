@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Col : MonoBehaviour
 {
-    [SerializeField] private bool cheat;
+    [SerializeField] private bool jumpboostMode;
 
     public static event Action onCollisionWithCheckpoint;
     public AudioClip checkpointPassed; 
@@ -22,8 +22,7 @@ public class Col : MonoBehaviour
         if (collision.collider.gameObject.CompareTag("Checkpoint"))
         {
             // Disable increasing jumping boost in cheat mode
-            if(!cheat) checkpoints++;
-            Debug.Log("Passed through a checkpoint");
+            if(!jumpboostMode) checkpoints++;
             // If the previous coroutine still running stop it
             StopAllCoroutines();
             // Shake the camera
@@ -38,7 +37,6 @@ public class Col : MonoBehaviour
         if (collider.gameObject.CompareTag("Env"))
         {
             Destroy(gameObject);
-            Debug.Log("Collision and object destroyed");
             GameManager.Instance.UpdateGameState(State.GAMEOVER);
         }
     }
@@ -46,8 +44,8 @@ public class Col : MonoBehaviour
     /// <summary>
     /// Toggle Cheat mode
     /// </summary>
-    public void ToggleCheatMode()
+    public void ToggleJumpBoostMode()
     {
-        cheat = !cheat;
+        jumpboostMode = !jumpboostMode;
     }
 }

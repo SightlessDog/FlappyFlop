@@ -7,7 +7,7 @@ using static Managers.Properties;
 
 public class CharacterController : MonoBehaviour
 {
-    [SerializeField] private bool cheat;
+    [SerializeField] private bool selfControlMode;
     [SerializeField] private float ySpeed;
     [SerializeField] private float yTarget;
     [SerializeField] private float yBoost = 0f;
@@ -22,7 +22,7 @@ public class CharacterController : MonoBehaviour
     void Awake()
     {
         currentStateIndex = 0;
-        cheat = false;
+        selfControlMode = false;
         GameManager.onGameStateChanged += GameManagerOnGameStateChanged;
     }
 
@@ -48,9 +48,9 @@ public class CharacterController : MonoBehaviour
     /// <summary>
     /// Toggle cheat mode
     /// </summary>
-    public void ToggleCheatMode()
+    public void ToggleSelfControlMode()
     {
-        cheat = !cheat;
+        selfControlMode = !selfControlMode;
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public class CharacterController : MonoBehaviour
         if (started)
         {
             SwitchLine();
-            if (cheat)
+            if (selfControlMode)
             {
                 CheatBirdControl();
             }

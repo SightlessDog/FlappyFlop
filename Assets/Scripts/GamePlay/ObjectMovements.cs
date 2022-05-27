@@ -20,6 +20,10 @@ public class ObjectMovements : MonoBehaviour
         GameManager.onGameStateChanged -= GameManagerOnGameStateChanged;
     }
 
+    /// <summary>
+    /// Update game state
+    /// </summary>
+    /// <param name="state"></param>
     private void GameManagerOnGameStateChanged(State state)
     {
         started = state == State.PLAY;
@@ -37,6 +41,9 @@ public class ObjectMovements : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Move Objects towards the chracter
+    /// </summary>
     private void MoveObject()
     {
         //Destroy object after {life}
@@ -49,6 +56,9 @@ public class ObjectMovements : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Adjusting the current game speed based on the value from game manager
+    /// </summary>
     private void TimeController()
     {
         if (paused)

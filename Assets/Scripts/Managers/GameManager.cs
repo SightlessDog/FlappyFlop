@@ -20,22 +20,36 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>
+    /// Initialize the game
+    /// </summary>
     void Start()
     {
         UpdateGameState(INIT);
     }
 
+    /// <summary>
+    /// Go to play mode
+    /// </summary>
     public void PlayClicked()
     {
         started = true;
         UpdateGameState(PLAY);
     }
 
+    /// <summary>
+    /// Quit the game
+    /// </summary>
     public void QuitClicked()
     {
         Application.Quit();
     }
 
+    /// <summary>
+    /// Update game state
+    /// </summary>
+    /// <param name="state"></param>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     public void UpdateGameState(State state)
     {
         this.state = state;
@@ -72,6 +86,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Pause Option
+    /// </summary>
     private void PauseManager()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && state != GAMEOVER)
@@ -85,6 +102,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adjust the game speed
+    /// </summary>
+    /// <param name="speed"></param>
     public void SetGameSpeed(float speed)
     {
         gameSpeed = speed;
