@@ -3,14 +3,12 @@ using System;
 using GamePlay;
 using static GamePlay.CharacterState;
 using static Managers.Properties;
-using Random = UnityEngine.Random;
 
 public class EnemiesGenerator : MonoBehaviour
 {
     [SerializeField] private float sendTimer = 0;
     // Use the same frequency
     [SerializeField] private float frequency = OBSTACLE_FREQUENCY;
-    [SerializeField] private int sendBlockTimer = BLOCK_OBSTACLE_FREQUENCY;
     [SerializeField] private bool noEnemies;
     [SerializeField] private GameObject parent;
     [SerializeField] private CharacterState currentCharacterState;
@@ -71,14 +69,14 @@ public class EnemiesGenerator : MonoBehaviour
     { 
         switch (currentCharacterState)
             {
-                case MIDDLE:
-                    CreateEnemies(0);
-                    break;
                 case LEFT:
-                    CreateEnemies(DISTANCE_LEFT);
+                CreateEnemies(DISTANCE_LEFT);
+                    break;
+                case MIDDLE:
+                CreateEnemies(0);
                     break;
                 case RIGHT:
-                    CreateEnemies(-DISTANCE_RIGHT);
+                CreateEnemies(-DISTANCE_RIGHT);
                     break;
                 case DEAD:
                     break;
@@ -94,7 +92,6 @@ public class EnemiesGenerator : MonoBehaviour
     {
         noEnemies = !noEnemies;
     }
-    
 
     /// <summary>
     /// Create enemies 
@@ -104,7 +101,7 @@ public class EnemiesGenerator : MonoBehaviour
         // yPos will be the y value of the checkpoint
         var yPos = GameObject.FindGameObjectWithTag("Checkpoint").transform.position.y;
         var zPos = GameObject.FindGameObjectWithTag("Checkpoint").transform.position.z;
-        transform.position = new Vector3(xPos, yPos + 1f , zPos);
+        transform.position = new Vector3(xPos, yPos + 1f , zPos - 40);
         Instantiate(myEnemy, transform.position, transform.rotation, parent.transform);
     }
 

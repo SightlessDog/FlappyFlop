@@ -5793,13 +5793,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sendTimer: 0
   frequency: 4
-  sendBlockTimer: 2
   noEnemies: 0
   parent: {fileID: 0}
   currentCharacterState: 0
   myEnemy: {fileID: 2669465537155562399, guid: 9c3ba7227707a274fbac942fe90e78d0, type: 3}
   myObstacle: {fileID: 5294471520518487945, guid: ad3f2ebb3b21dc342bbc7d49279f486e, type: 3}
-  mainCharacter: {fileID: 5787010276172219382, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
+  mainCharacter: {fileID: 428081061}
 --- !u!1 &1896550706
 GameObject:
   m_ObjectHideFlags: 0
