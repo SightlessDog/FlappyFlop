@@ -208,7 +208,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1884773742}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemiesGenerator, Assembly-CSharp
         m_MethodName: ToggleCheatMode
         m_Mode: 1
@@ -5557,7 +5557,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 10}
   speed: 30
   zRot: 0
-  hardMode: 0
+  spinMode: 0
 --- !u!1 &1854526245
 GameObject:
   m_ObjectHideFlags: 0
@@ -5773,7 +5773,7 @@ MonoBehaviour:
   sendTimer: 0
   frequency: 5
   sendBlockTimer: 3
-  cheat: 0
+  staticObstaclesMode: 0
   parent: {fileID: 0}
   currentCharacterState: 0
   myObstacle: {fileID: 5294471520518487945, guid: ad3f2ebb3b21dc342bbc7d49279f486e, type: 3}
@@ -5792,13 +5792,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sendTimer: 0
-  frequency: 5
-  cheat: 0
+  frequency: 4
+  sendBlockTimer: 2
+  noEnemies: 0
   parent: {fileID: 0}
-  currentCharacterState: 2
+  currentCharacterState: 0
   myEnemy: {fileID: 2669465537155562399, guid: 9c3ba7227707a274fbac942fe90e78d0, type: 3}
   myObstacle: {fileID: 5294471520518487945, guid: ad3f2ebb3b21dc342bbc7d49279f486e, type: 3}
-  mainCharacter: {fileID: 428081061}
+  mainCharacter: {fileID: 5787010276172219382, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
 --- !u!1 &1896550706
 GameObject:
   m_ObjectHideFlags: 0
