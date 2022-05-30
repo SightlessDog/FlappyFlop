@@ -13,7 +13,7 @@
         //Frequency to send objects
         public const float TERRAIN_FREQUENCY = 10f;
         public const float OBSTACLE_FREQUENCY = 4f;
-        public const float ENEMY_FREQUENCY = 15f;
+        public const float ENEMY_FREQUENCY = 13f;
         public const int BLOCK_OBSTACLE_FREQUENCY = 2;
 
         //Obstacle yPos

@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour
     public GameObject mainCharacter;
     [SerializeField] private float smoothSpeed = 0.125f;
     [SerializeField] private Vector3 offset;
-    [SerializeField] private float speed = 30.0f;
+    [SerializeField] private float speed = 15.0f;
     [SerializeField] private float zRot = 0.0f;
     [SerializeField] private bool spinMode;
 
