@@ -13,7 +13,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float yBoost = 0f;
 
     public CharacterState currentState;
-    
+
     private int currentStateIndex;
     private int checkpoints;
     private bool started;
@@ -100,7 +100,7 @@ public class CharacterController : MonoBehaviour
         ChangeSpeedAccordingToCheckpoints();
         gameObject.transform.Translate(0, ySpeed, 0);
         ySpeed = Mathf.Lerp(ySpeed, yTarget, 0.025f);
-        
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ySpeed = 0.25f + yBoost;
@@ -123,19 +123,19 @@ public class CharacterController : MonoBehaviour
             gameObject.transform.Translate(0, -1f, 0);
         }
     }
-    
+
     /// <summary>
     /// Return current state of the character
     /// </summary>
     private CharacterState GetCurrentCharacterState()
     {
         return currentStateIndex switch
-            {
-                0 => MIDDLE,
-                1 => RIGHT,
-                -1 => LEFT,
-                _ => DEAD
-            };
+        {
+            0 => MIDDLE,
+            1 => RIGHT,
+            -1 => LEFT,
+            _ => DEAD
+        };
     }
 
     /// <summary>
@@ -149,6 +149,5 @@ public class CharacterController : MonoBehaviour
         else if (checkpoints < 6) yBoost = 0.1f;
         else if (checkpoints < 8) yBoost = 0.15f;
         else yBoost = 0.2f;
-
     }
 }
