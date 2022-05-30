@@ -4,7 +4,7 @@ Project for GTAT1 course / SoSe 20202/ IMI - HTW Berlin
 
 ## Game Programming
 
-- [ ] physics-basierte Anwendung
+- [x] physics-basierte Anwendung
 
 - [x] Punktesystem (Highscore, File-Persistierung)
 
