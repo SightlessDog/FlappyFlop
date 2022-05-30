@@ -42,7 +42,7 @@ that hole and if you hit them you will lose the game.
 Whenever you hit *ESC* the game pauses and you can hit *ESC* again to unpause. 
 If you lose and you see the game over screen you could also press *ESC* to restart the game. 
 
-## - Images 
+## Images 
 ![Menu](Assets/Image/Menu.PNG)
 ![Settings](Assets/Image/Settings.PNG)
 ![Dark Scene](Assets/Image/Dark.PNG)
