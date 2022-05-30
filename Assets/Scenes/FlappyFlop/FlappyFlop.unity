@@ -5792,7 +5792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sendTimer: 0
-  frequency: 5
+  frequency: 15
   noEnemyMode: 0
   parent: {fileID: 0}
   currentCharacterState: 2
