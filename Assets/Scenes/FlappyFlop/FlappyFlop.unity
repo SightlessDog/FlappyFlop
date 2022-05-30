@@ -1388,6 +1388,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38937172b0c4c144593d55e784f3f646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &428081065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6669548467385990746, guid: fd7f9b05d2f75b448a28e8c6acacb8b4, type: 3}
+  m_PrefabInstance: {fileID: 6669548468766801880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428081061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a46092694be9444d9790e6db9c1c745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519102921
 GameObject:
   m_ObjectHideFlags: 0
@@ -4100,9 +4111,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 428081064}
-        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
-        m_MethodName: ToogleJumpBoostMode
+      - m_Target: {fileID: 428081065}
+        m_TargetAssemblyTypeName: Col, Assembly-CSharp
+        m_MethodName: ToggleJumpBoostMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5021,7 +5032,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: No Extra Jumping Boost
+  m_text: Jump Boosting
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
