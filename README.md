@@ -43,7 +43,7 @@ Whenever you hit *ESC* the game pauses and you can hit *ESC* again to unpause.
 If you lose and you see the game over screen you could also press *ESC* to restart the game. 
 
 ## - Images 
-![Menu](Assets/Images/Menu.PNG)
-![Settings](Assets/Images/Settings.PNG)
-![Dark Scene](Assets/Images/dark.PNG)
-![Pausing the game](Assets/Images/Pause.PNG)
+![Menu](Assets/Image/Menu.PNG)
+![Settings](Assets/Image/Settings.PNG)
+![Dark Scene](Assets/Image/Dark.PNG)
+![Pausing the game](Assets/Image/Pause.PNG)
