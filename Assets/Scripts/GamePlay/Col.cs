@@ -31,6 +31,8 @@ public class Col : MonoBehaviour
             if (jumpboostMode) checkpoints++;
             // If the previous coroutine still running stop it
             StopAllCoroutines();
+            // Destroy Checkpoint
+            Destroy(collision.collider);
             // Shake the camera
             StartCoroutine(cameraShake.Shake(.03f, .3f));
             //Play the audio
@@ -45,7 +47,7 @@ public class Col : MonoBehaviour
     /// <param name="collider"></param>
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.CompareTag("Env"))
+        if (collider.gameObject.CompareTag("Env") || collider.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
             GameManager.Instance.UpdateGameState(State.GAMEOVER);
