@@ -1,6 +1,6 @@
 # FlappyFlop
 
-Project for GTAT1 course / SoSe 20202/ IMI - HTW Berlin
+Project for GTAT1 course / SoSe 2022/ IMI - HTW Berlin
 
 ## Game Programming
 
