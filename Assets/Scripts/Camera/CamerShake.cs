@@ -5,6 +5,8 @@ using UnityEngine;
 public class CamerShake : MonoBehaviour
 {
     // Use coroutine to make the animation run over multiple frames and not block the calling method
+    // generate random numbers for the x and y axis and then put the new position of the camera over there
+    // using the Lerp function to make the movement smooth
     public IEnumerator Shake(float duration, float magnitude)
     {
         Vector3 origPosition = transform.localPosition;
