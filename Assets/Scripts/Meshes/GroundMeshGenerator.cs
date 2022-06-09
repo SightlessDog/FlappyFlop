@@ -1,17 +1,19 @@
 using UnityEngine;
 
+// Tutorial:
+// https://www.youtube.com/watch?v=eJEpeUH1EMg
+// https://www.youtube.com/watch?v=64NblGkAabk
 [RequireComponent(typeof(MeshFilter))]
 public class GroundMeshGenerator : MonoBehaviour
 {
-    Mesh mesh;
+    private Mesh mesh;
 
-    Vector3[] vertices;
-    int[] triangles;
+    private Vector3[] vertices;
+    private int[] triangles;
 
     [SerializeField] private int xSize = 300;
     [SerializeField] private int zSize = 300;
 
-    // Start is called before the first frame update
     void Start()
     {
         mesh = new Mesh();
@@ -20,7 +22,13 @@ public class GroundMeshGenerator : MonoBehaviour
         UpdateMesh();
     }
 
-    void CreateShape()
+    private void CreateShape()
+    {
+        CreateVertices();
+        CreateTriangles();
+    }
+
+    private void CreateVertices()
     {
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
 
@@ -28,18 +36,18 @@ public class GroundMeshGenerator : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 10f;
+                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 20f;
                 vertices[i] = new Vector3(x, y, z);
                 i++;
             }
         }
+    }
 
+    private void CreateTriangles()
+    {
         triangles = new int[xSize * zSize * 6];
 
-        int vert = 0;
-        int tris = 0;
-
-        for (int z = 0; z < zSize; z++)
+        for (int vert = 0, tris = 0, z = 0; z < zSize; z++)
         {
             for (int x = 0; x < xSize; x++)
             {
@@ -58,7 +66,7 @@ public class GroundMeshGenerator : MonoBehaviour
         }
     }
 
-    void UpdateMesh()
+    private void UpdateMesh()
     {
         mesh.Clear();
         mesh.vertices = vertices;
