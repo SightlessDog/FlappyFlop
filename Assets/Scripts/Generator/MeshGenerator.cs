@@ -22,17 +22,23 @@ public enum MeshType
 
 public class MeshGenerator : MonoBehaviour
 {
+    public static MeshGenerator Instance;
     [SerializeField] private Mesh generatedMesh;
     [SerializeField] private MeshType meshType;
 
     private void Start()
     {
-        Generate();
+        GenerateMesh();
     }
 
-    private void Generate()
+    void Awake()
     {
-        Generate(SelectMeshFunction());
+        Instance = this;
+    }
+
+    public void GenerateMesh()
+    {
+        GenerateMeshes(new TwistedTorus());
     }
 
     MeshFunction SelectMeshFunction() => meshType switch
@@ -42,8 +48,9 @@ public class MeshGenerator : MonoBehaviour
         _ => throw new ArgumentOutOfRangeException(nameof(meshType))
     };
 
-    private void Generate(MeshFunction meshFunction)
+    public void GenerateMeshes(MeshFunction meshFunction)
     {
+        Debug.Log("[DEBUG] Mesh generation");
         generatedMesh = new Mesh();
 
         var subdivisions = meshFunction.Subdivisions;
