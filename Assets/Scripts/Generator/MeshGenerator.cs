@@ -17,7 +17,8 @@ public enum MeshType
     Plane, 
     Snail, 
     Bottle, 
-    Torus
+    Torus,
+    Sphere
 }
 
 public class MeshGenerator : MonoBehaviour
@@ -38,13 +39,14 @@ public class MeshGenerator : MonoBehaviour
 
     public void GenerateMesh()
     {
-        GenerateMeshes(new TwistedTorus());
+        GenerateMeshes(SelectMeshFunction());
     }
 
     MeshFunction SelectMeshFunction() => meshType switch
     {
         MeshType.Snail => new SnailSurface(),
         MeshType.Torus => new TwistedTorus(),
+        MeshType.Sphere => new TwistedSphere(),
         _ => throw new ArgumentOutOfRangeException(nameof(meshType))
     };
 
