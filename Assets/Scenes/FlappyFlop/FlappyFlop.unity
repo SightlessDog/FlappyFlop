@@ -3374,7 +3374,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a444d913ace54c40a5936d7c32283de, type: 2}
+  - {fileID: 2100000, guid: 59fb5345321e11b4db763195a3b7bb1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6779,7 +6779,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 10}
   speed: 15
   zRot: 0
-  spinMode: 1
+  spinMode: 0
 --- !u!1 &1854526245
 GameObject:
   m_ObjectHideFlags: 0
@@ -6995,7 +6995,7 @@ MonoBehaviour:
   sendTimer: 0
   frequency: 5
   sendBlockTimer: 3
-  staticObstaclesMode: 0
+  staticObstaclesMode: 1
   parent: {fileID: 0}
   currentCharacterState: 0
   myObstacle: {fileID: 5294471520518487945, guid: ad3f2ebb3b21dc342bbc7d49279f486e, type: 3}
@@ -7015,7 +7015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sendTimer: 0
   frequency: 13
-  noEnemyMode: 0
+  noEnemyMode: 1
   parent: {fileID: 0}
   currentCharacterState: 2
   myEnemy: {fileID: 6973036561765520094, guid: 9c3ba7227707a274fbac942fe90e78d0, type: 3}
@@ -7265,7 +7265,7 @@ GameObject:
   - component: {fileID: 2031402564}
   - component: {fileID: 2031402563}
   m_Layer: 0
-  m_Name: StarMesh
+  m_Name: SkyMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7319,7 +7319,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 64154d5d80792f94f86e62d53e3aea66, type: 2}
+  - {fileID: 2100000, guid: 8231bfb1fbad7614f9e87dee5451a1d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

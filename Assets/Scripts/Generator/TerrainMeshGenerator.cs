@@ -10,6 +10,7 @@ public class TerrainMeshGenerator : MonoBehaviour
 
     private Vector3[] vertices;
     private int[] triangles;
+    private Vector2[] uvs;
 
     [SerializeField] private int xSize;
     [SerializeField] private int zSize;
@@ -64,6 +65,17 @@ public class TerrainMeshGenerator : MonoBehaviour
 
             vert++;
         }
+
+        uvs = new Vector2[vertices.Length];
+
+        for (int i = 0, z = 0; z <= zSize; z++)
+        {
+            for (int x = 0; x <= xSize; x++)
+            {
+                uvs[i] = new Vector2((float) x / xSize, (float) z / zSize);
+                i++;
+            }
+        }
     }
 
     private void UpdateMesh()
@@ -71,6 +83,7 @@ public class TerrainMeshGenerator : MonoBehaviour
         mesh.Clear();
         mesh.vertices = vertices;
         mesh.triangles = triangles;
+        mesh.uv = uvs;
         mesh.RecalculateNormals();
     }
 }
