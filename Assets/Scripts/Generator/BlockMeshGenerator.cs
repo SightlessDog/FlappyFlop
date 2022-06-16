@@ -3,19 +3,19 @@ using UnityEngine;
 //Tutorial:
 //https://www.youtube.com/watch?v=zISwvdnR8JY
 [RequireComponent(typeof(MeshFilter))]
-public class BlockObstacleMeshGenerator : MonoBehaviour
+public class BlockMeshGenerator : MonoBehaviour
 {
     private Mesh mesh;
 
-    [SerializeField] private float upDownFactor = 0.2f;
-    [SerializeField] private float upDownSpeed = 5f;
+    [SerializeField] private float upDownFactor;
+    [SerializeField] private float upDownSpeed;
 
-    [SerializeField] private float leftFactor = 0.3f;
-    [SerializeField] private float leftSpeed = 3f;
-    [SerializeField] private float leftOffset = 2f;
+    [SerializeField] private float leftFactor;
+    [SerializeField] private float leftSpeed;
+    [SerializeField] private float leftOffset;
 
-    [SerializeField] private float strectFactor = -0.3f;
-    [SerializeField] private float strectSpeed = 4f;
+    [SerializeField] private float strectFactor;
+    [SerializeField] private float strectSpeed;
     
     // Start is called before the first frame update
     void Start()

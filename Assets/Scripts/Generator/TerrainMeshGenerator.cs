@@ -4,15 +4,15 @@ using UnityEngine;
 // https://www.youtube.com/watch?v=eJEpeUH1EMg
 // https://www.youtube.com/watch?v=64NblGkAabk
 [RequireComponent(typeof(MeshFilter))]
-public class GroundMeshGenerator : MonoBehaviour
+public class TerrainMeshGenerator : MonoBehaviour
 {
     private Mesh mesh;
 
     private Vector3[] vertices;
     private int[] triangles;
 
-    [SerializeField] private int xSize = 300;
-    [SerializeField] private int zSize = 300;
+    [SerializeField] private int xSize;
+    [SerializeField] private int zSize;
 
     void Start()
     {
