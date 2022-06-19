@@ -1120,7 +1120,7 @@
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.SystemData",
     "m_ObjectId": "51120cb4c0b349bd95aabff84b2eb7ec",
-    "m_MaterialNeedsUpdateHash": 529,
+    "m_MaterialNeedsUpdateHash": 292537,
     "m_SurfaceType": 0,
     "m_RenderingPass": 1,
     "m_BlendMode": 0,
@@ -2968,10 +2968,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -500.039306640625,
-            "y": -163.34202575683595,
-            "width": 0.0,
-            "height": 0.0
+            "x": -501.6000061035156,
+            "y": -163.1999969482422,
+            "width": 208.0,
+            "height": 325.5999755859375
         }
     },
     "m_Slots": [
