@@ -54,7 +54,6 @@ public class MeshGenerator : MonoBehaviour
 
     public void GenerateMeshes(MeshFunction meshFunction)
     {
-        Debug.Log("[DEBUG] Mesh generation");
         generatedMesh = new Mesh();
 
         var subdivisions = meshFunction.Subdivisions;
