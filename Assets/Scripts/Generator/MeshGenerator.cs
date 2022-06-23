@@ -16,7 +16,6 @@ public enum MeshType
 {
     Plane, 
     Snail, 
-    Bottle, 
     Torus,
     Sphere, 
     Helice
@@ -45,6 +44,7 @@ public class MeshGenerator : MonoBehaviour
 
     MeshFunction SelectMeshFunction() => meshType switch
     {
+        MeshType.Plane => new Plane(),
         MeshType.Snail => new SnailSurface(),
         MeshType.Torus => new TwistedTorus(),
         MeshType.Sphere => new TwistedSphere(),

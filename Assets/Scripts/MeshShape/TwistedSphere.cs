@@ -9,7 +9,8 @@ public class TwistedSphere : MeshFunction
     public Vector2 VMinMax => new Vector2(-1, 1);
     public Vector2Int Subdivisions => new Vector2Int(120, 120);
 
-    public Vector3 Vertex(float u, float v) => Sphere(u, v);
+    public Vector3 Vertex(float u, float v) => new Vector3(
+        u, v, 0);
         
     public Vector3 Sphere (float u, float v) {
         float r = 0.9f + 0.1f * Sin(PI * (6f * u + 4f * v));
