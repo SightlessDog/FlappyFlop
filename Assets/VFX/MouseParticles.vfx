@@ -13,7 +13,39 @@ MonoBehaviour:
   m_Name: VFXUI
   m_EditorClassIdentifier: 
   groupInfos: []
-  stickyNoteInfos: []
+  stickyNoteInfos:
+  - title: 
+    position:
+      serializedVersion: 2
+      x: 724
+      y: -476
+      width: 126
+      height: 100
+    contents: 'How many particles get generated at the beginning
+
+'
+    theme: Classic
+    textSize: Small
+  - title: 
+    position:
+      serializedVersion: 2
+      x: 365
+      y: -38
+      width: 151
+      height: 128
+    contents: 'the function that determines the movement of the particles '
+    theme: Classic
+    textSize: Small
+  - title: 
+    position:
+      serializedVersion: 2
+      x: -931
+      y: 928
+      width: 194
+      height: 160
+    contents: Position of the mouse influenc es the movement of the particles
+    theme: Classic
+    textSize: Small
   categories: []
   uiBounds:
     serializedVersion: 2
@@ -3826,7 +3858,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.54
+      m_SerializableObject: 1
     m_Space: 2147483647
   m_Property:
     name: time

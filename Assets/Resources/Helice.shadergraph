@@ -64,7 +64,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "f149d80b3a7442068c3be730fc235434"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -1794,6 +1798,26 @@
     },
     "m_Labels": [],
     "m_Space": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "f149d80b3a7442068c3be730fc235434",
+    "m_Title": "",
+    "m_Content": "Load a predefined texture",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -957.5999755859375,
+        "y": -153.60000610351563,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {

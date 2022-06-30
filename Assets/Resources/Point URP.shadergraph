@@ -80,7 +80,14 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "33586c2527ab4ca99e16d81fe18c941b"
+        },
+        {
+            "m_Id": "7af93f7966aa4a8d8f0aee76068438f9"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -549,6 +556,26 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "33586c2527ab4ca99e16d81fe18c941b",
+    "m_Title": "",
+    "m_Content": "U MIN MAX\n\nV MIN MAX",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1357.60009765625,
+        "y": -628.0,
+        "width": 80.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -1318,6 +1345,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "7af93f7966aa4a8d8f0aee76068438f9",
+    "m_Title": "",
+    "m_Content": "Custom function to deal with the u, v coordinates in order to generate the torus\n\nSee Graph Inspector",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -682.3999633789063,
+        "y": -856.0,
+        "width": 199.99996948242188,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "7c65ed22c1ca41b2adbf482545164b90",
     "m_Group": {
@@ -1682,9 +1729,9 @@
         "m_Position": {
             "serializedVersion": "2",
             "x": -684.0,
-            "y": -715.199951171875,
+            "y": -715.2000732421875,
             "width": 208.0,
-            "height": 325.6000061035156
+            "height": 325.60003662109377
         }
     },
     "m_Slots": [
