@@ -7,6 +7,9 @@ public class BlockMeshGenerator : MonoBehaviour
 {
     private Mesh mesh;
 
+    private Vector3[] vertices;
+    private int[] triangles;
+
     [SerializeField] private float upDownFactor;
     [SerializeField] private float upDownSpeed;
 
@@ -14,47 +17,65 @@ public class BlockMeshGenerator : MonoBehaviour
     [SerializeField] private float leftSpeed;
     [SerializeField] private float leftOffset;
 
-    [SerializeField] private float strectFactor;
-    [SerializeField] private float strectSpeed;
-    
     // Start is called before the first frame update
     void Start()
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-
+        
+        CreateCube();
         UpdateMesh();
     }
-    
+
     void Update()
     {
-        mesh.vertices = NewVertCube(Mathf.Sin(Time.realtimeSinceStartup * upDownSpeed) * upDownFactor,
-            Mathf.Sin(Time.realtimeSinceStartup * leftSpeed + leftOffset) * leftFactor,
-            Mathf.Sin(Time.realtimeSinceStartup * strectSpeed) * strectFactor
-        );
+        //Make the cube moving by updating the top vertices of the cube
+        //Adjustable by speed/ factor/ offset inputs
+        GetCubeVertices(Mathf.Sin(Time.realtimeSinceStartup * upDownSpeed) * upDownFactor,
+            Mathf.Sin(Time.realtimeSinceStartup * leftSpeed + leftOffset) * leftFactor);
+        mesh.vertices = vertices;
     }
 
-    private Vector3[] NewVertCube(float up = 0f, float left = 0f, float stretch = 0f)
+    /// <summary>
+    /// Create a static cube
+    /// </summary>
+    private void CreateCube()
     {
-        return new Vector3[]
-        {
-            //Bottom
-            new Vector3(-1, 0, 1),
-            new Vector3(1, 0, 1),
-            new Vector3(1, 0, -1),
-            new Vector3(-1, 0, -1),
-
-            //Top
-            new Vector3(-1 - stretch + left, 2 + up, 1 + stretch),
-            new Vector3(1 + stretch + left, 2 + up, 1 + stretch),
-            new Vector3(1 + stretch + left, 2 + up, -1 - stretch),
-            new Vector3(-1 - stretch + left, 2 + up, -1 - stretch),
-        };
+        GetCubeVertices(0f,0f);
+        GetCubeTriangles();
     }
 
-    private int[] NewTrisCube()
+    /// <summary>
+    /// Defining all vertices of a cube
+    /// </summary>
+    /// <param name="up"></param>
+    /// <param name="left"></param>
+    private void GetCubeVertices(float up, float left)
     {
-        return new int[]
+        vertices = new Vector3[8];
+
+        //bottom vertices are always static
+        //Bottom
+        vertices[0] = new Vector3(-1, 0, 1);
+        vertices[1] = new Vector3(1, 0, 1);
+        vertices[2] = new Vector3(1, 0, -1);
+        vertices[3] = new Vector3(-1, 0, -1);
+
+        //Adjusting top vertices of the cube based on the given input, which can make the cube moving during the time
+        //Top
+        vertices[4] = new Vector3(-1 + left, 2 + up, 1);
+        vertices[5] = new Vector3(1 + left, 2 + up, 1);
+        vertices[6] = new Vector3(1 + left, 2 + up, -1);
+        vertices[7] = new Vector3(-1 + left, 2 + up, -1);
+    }
+
+    /// <summary>
+    /// Defining all sides of a cube
+    /// </summary>
+    private void GetCubeTriangles()
+    {
+        //each side is created by 2 triangles with the corresponding vertices points below
+        triangles = new int[]
         {
             //Bottom
             2, 1, 0,
@@ -77,11 +98,14 @@ public class BlockMeshGenerator : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Update the mesh attributes
+    /// </summary>
     private void UpdateMesh()
     {
         mesh.Clear();
-        mesh.vertices = NewVertCube();
-        mesh.triangles = NewTrisCube();
+        mesh.vertices = vertices;
+        mesh.triangles = triangles;
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
     }
