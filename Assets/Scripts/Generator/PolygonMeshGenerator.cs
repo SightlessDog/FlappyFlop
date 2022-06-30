@@ -4,6 +4,7 @@ using UnityEngine;
 
 //Tutorial:
 //https://www.youtube.com/watch?v=YG-gIX_OvSE
+[RequireComponent(typeof(MeshFilter))]
 public class PolygonMeshGenerator : MonoBehaviour
 {
     Mesh mesh;
