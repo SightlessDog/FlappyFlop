@@ -11,7 +11,10 @@ public class Helice : MeshFunction
     public Vector2Int Subdivisions => new Vector2Int(120, 120);
 
     public Vector3 Vertex(float u, float v) => helice(u, v);
-        
+    
+    /// <summary>
+    /// Formula of a Helice
+    /// </summary>
     public Vector3 helice(float u, float v) {
         Vector3 p;
         p.x = u * Cos(v);

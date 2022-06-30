@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Extended in the different implementations of the function
+/// See: Helice.cs for example 
+/// </summary>
 public interface MeshFunction
 {
     Vector2 UMinMax { get; }
@@ -10,7 +14,6 @@ public interface MeshFunction
     Vector2Int Subdivisions { get; }
     Vector3 Vertex(float u, float v);
 }
-
 
 public enum MeshType
 {
@@ -57,6 +60,7 @@ public class MeshGenerator : MonoBehaviour
         generatedMesh = new Mesh();
 
         var subdivisions = meshFunction.Subdivisions;
+        // If we have M,N subdivisions -> we have M+1 vertices in X direction and N + 1 vertices in Y direction
         var vertexSize = subdivisions + new Vector2Int(1, 1);
 
         var vertices = new Vector3[vertexSize.x * vertexSize.y];
@@ -65,13 +69,15 @@ public class MeshGenerator : MonoBehaviour
         var uDelta = meshFunction.UMinMax.y - meshFunction.UMinMax.x;
         var vDelta = meshFunction.VMinMax.y - meshFunction.VMinMax.x;
         
-
+        // Generate the points
         for (var y = 0; y < vertexSize.y; y++)
         {
+            // Normalize the y coordinate as v
             var v = (1f / subdivisions.y) * y;
 
             for (var x = 0; x < vertexSize.x; x++)
             {
+                // Normalize the x coordinate as u
                 var u = (1f / subdivisions.x) * x;
                 var scaledUv = new Vector2(u * uDelta - meshFunction.UMinMax.x, v * vDelta - meshFunction.VMinMax.x);
                 var vertex = meshFunction.Vertex(scaledUv.x, scaledUv.y);
@@ -82,6 +88,7 @@ public class MeshGenerator : MonoBehaviour
             }
         }
 
+        // Connect the points and generate the triangles
         var triangles = new int[subdivisions.x * subdivisions.y * 6];
         for (var i = 0; i < subdivisions.x * subdivisions.y; i += 1)
         {
@@ -104,7 +111,8 @@ public class MeshGenerator : MonoBehaviour
         generatedMesh.RecalculateBounds();
         generatedMesh.RecalculateNormals();
         generatedMesh.RecalculateTangents();
-
+        
+        // Display the mesh
         GetComponent<MeshFilter>().mesh = generatedMesh;
     }
 }

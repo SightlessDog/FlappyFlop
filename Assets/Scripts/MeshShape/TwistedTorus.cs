@@ -8,9 +8,11 @@
         public Vector2 VMinMax => new Vector2(-1, 1);
         public Vector2Int Subdivisions => new Vector2Int(100, 100);
 
-        public Vector3 Vertex(float u, float v) => new Vector3(
-            u, v, 0);
+        public Vector3 Vertex(float u, float v) => Torus(u, v);
         
+        /// <summary>
+        /// Formula of a twisted Torus
+        /// </summary>
         public Vector3 Torus (float u, float v) {
             float r1 = 0.7f + 0.1f * Sin(PI * (6f * u + 0.5f));
             float r2 = 0.15f + 0.05f * Sin(PI * (8f * u + 4f * v + 2f));
