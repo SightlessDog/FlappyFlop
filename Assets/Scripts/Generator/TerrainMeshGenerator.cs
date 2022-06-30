@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Tutorial:
+// Tutorials:
 // https://www.youtube.com/watch?v=eJEpeUH1EMg
 // https://www.youtube.com/watch?v=64NblGkAabk
 // https://www.youtube.com/watch?v=lNyZ9K71Vhc
@@ -33,7 +33,7 @@ public class TerrainMeshGenerator : MonoBehaviour
     {
         CreateVertices();
         CreateTriangles();
-        CreateUV();
+        CreateUVMapping();
     }
 
     /// <summary>
@@ -89,20 +89,28 @@ public class TerrainMeshGenerator : MonoBehaviour
         }
     }
 
-    private void CreateUV()
+    /// <summary>
+    /// UV mapping for the generated mesh
+    /// </summary>
+    private void CreateUVMapping()
     {
         uvs = new Vector2[vertices.Length];
 
+        //looping through the array of uv, which is equal to our vertices
         for (int i = 0, z = 0; z <= zSize; z++)
         {
             for (int x = 0; x <= xSize; x++)
             {
+                //mapping according position 
                 uvs[i] = new Vector2((float) x / xSize, (float) z / zSize);
                 i++;
             }
         }
     }
 
+    /// <summary>
+    /// Update the mesh based on the calculated vertices, triangles, uvs
+    /// </summary>
     private void UpdateMesh()
     {
         mesh.Clear();
