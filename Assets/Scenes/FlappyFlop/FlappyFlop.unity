@@ -950,7 +950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 109627366}
   m_Layer: 0
-  m_Name: DecoObstacles
+  m_Name: FluffyCubes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 128063640}
   - component: {fileID: 128063639}
   m_Layer: 0
-  m_Name: ObstacleMeshLeft
+  m_Name: CubeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3723,7 +3723,7 @@ GameObject:
   - component: {fileID: 864740484}
   - component: {fileID: 864740483}
   m_Layer: 0
-  m_Name: ObstacleMeshMiddle
+  m_Name: CubeMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7121,7 +7121,7 @@ GameObject:
   - component: {fileID: 1526154576}
   - component: {fileID: 1526154575}
   m_Layer: 0
-  m_Name: ObstacleMeshRight
+  m_Name: CubeRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 //Tutorial:
 //https://www.youtube.com/watch?v=zISwvdnR8JY
 [RequireComponent(typeof(MeshFilter))]
-public class BlockMeshGenerator : MonoBehaviour
+public class CubeGenerator : MonoBehaviour
 {
     private Mesh mesh;
 
