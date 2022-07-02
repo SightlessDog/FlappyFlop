@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 18361217}
   - component: {fileID: 18361216}
   m_Layer: 0
-  m_Name: PolygonMesh
+  m_Name: PolygonGate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,11 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782b56c6d6eb7d147a60152c5f4169cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  polygonPoints: []
-  polygonTriangles: 
+  vertices: []
+  triangles: 
   polygonSides: 3
-  polygonRadius: 80
-  centerRadius: 150
+  polygonOuterRadius: 80
+  centerInnerRadius: 150
 --- !u!33 &18361217
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1023,8 +1023,6 @@ MonoBehaviour:
   leftFactor: 0.3
   leftSpeed: 3
   leftOffset: 2
-  strectFactor: -0.3
-  strectSpeed: 4
 --- !u!23 &128063640
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3762,8 +3760,6 @@ MonoBehaviour:
   leftFactor: 0.3
   leftSpeed: 3
   leftOffset: 2
-  strectFactor: -0.3
-  strectSpeed: 4
 --- !u!23 &864740484
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4185,7 +4181,7 @@ GameObject:
   - component: {fileID: 940285586}
   - component: {fileID: 940285585}
   m_Layer: 0
-  m_Name: GroundMesh
+  m_Name: LavaGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7162,8 +7158,6 @@ MonoBehaviour:
   leftFactor: 0.3
   leftSpeed: 3
   leftOffset: 2
-  strectFactor: -0.3
-  strectSpeed: 4
 --- !u!23 &1526154576
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8119,7 +8113,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 10}
   speed: 15
   zRot: 0
-  spinMode: 0
+  spinMode: 1
 --- !u!1 &1854526245
 GameObject:
   m_ObjectHideFlags: 0
@@ -8335,7 +8329,7 @@ MonoBehaviour:
   sendTimer: 0
   frequency: 5
   sendBlockTimer: 3
-  staticObstaclesMode: 1
+  staticObstaclesMode: 0
   parent: {fileID: 0}
   currentCharacterState: 0
   myObstacle: {fileID: 5294471520518487945, guid: ad3f2ebb3b21dc342bbc7d49279f486e, type: 3}
@@ -8355,7 +8349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sendTimer: 0
   frequency: 13
-  noEnemyMode: 1
+  noEnemyMode: 0
   parent: {fileID: 0}
   currentCharacterState: 2
   myEnemy: {fileID: 6973036561765520094, guid: 9c3ba7227707a274fbac942fe90e78d0, type: 3}
@@ -8822,7 +8816,7 @@ GameObject:
   - component: {fileID: 2031402564}
   - component: {fileID: 2031402563}
   m_Layer: 0
-  m_Name: SkyMesh
+  m_Name: MagicSky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
